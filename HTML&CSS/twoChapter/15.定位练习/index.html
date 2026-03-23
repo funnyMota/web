@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .clearfix::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    a{
+      color: #999;
+      text-decoration: none;
+    }
+    li{
+      list-style: none;
+    }
+    .header{
+      background: #e3e4e5;
+      position: fixed;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      left: 0;
+      top: 0;
+    }
+    .header .topnav>li{
+      float: left;
+      width: 200px;
+      height: 40px;
+      text-align: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .header .topnav>li:hover{
+      border: 1px solid #999;
+      border-bottom: none;
+      line-height: 38px;
+      background: #fff;
+
+    }
+
+    .header .topnav>li .showmenu{
+      text-align: left;
+      width: 400px;
+      background: #fff;
+      display: none;
+      border: 1px solid #999;
+      position: absolute;
+      box-sizing: border-box;
+      right: -1px;
+
+    }
+    .header .topnav>li:hover .showmenu{
+      display: block;
+      padding: 10px;
+    }
+    .header .topnav>li:hover::after{
+      content:"";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      left:0;
+      bottom: 0;
+      background: #fff;
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <header class="header">
+      <ul class="topnav clearfix">
+        <li><a href="">测试测试</a></li>
+        <li><a href="">测试测试</a></li>
+        <li>
+          <a href="">测试测试</a>
+          <div class="showmenu">
+            <ul>
+              <li>Lorem.</li>
+              <li>Dolore.</li>
+              <li>Sed.</li>
+              <li>Excepturi.</li>
+              <li>Inventore.</li>
+              <li>Expedita.</li>
+              <li>Sunt.</li>
+              <li>At.</li>
+              <li>Nisi.</li>
+              <li>Tempore!</li>
+          </ul>
+          </div>
+        </li>
+        <li><a href="">测试测试</a></li>
+        <li><a href="">测试测试</a></li>
+      </ul>
+  </header>
+</body>
+</html>

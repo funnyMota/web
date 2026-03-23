@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./reset.css"/>
+  <style>
+    .banner{
+      width: 520px;
+      height: 300px;
+      position: relative;
+      margin:1em auto;
+      background-color: red;
+      overflow: hidden;
+    }
+    .banner .images{
+      width: 1560px;
+      height: 300px;
+    }
+    .banner .images a{
+      float: left;
+    }
+    .banner .images a img{
+      width: 520px;
+      height: 300px;
+    }
+    .useButton{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      height: 50px;
+      color: #fff;
+      font-size: 3em;
+      text-align: center;
+      margin: auto;
+      line-height: 50px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-family: Arial;
+    }
+    .useButton:hover{
+      background-color: #fff;
+      color: red;
+    }
+    .left{
+      left: 20px;
+
+    }
+    .right{
+      right: 20px;
+    }
+    .modal{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.3);
+      box-sizing:border-box;
+      line-height: 40px;
+      padding: 0 20px;
+      
+    }
+    .modal .title{
+      float: left;
+    }
+    .modal .title h2{
+      color: white;
+    }
+    .modal .nav{
+      float: right;
+    }
+    .modal .nav ul{
+      list-style: none;
+    }
+    .modal .nav li{
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 50%;
+      background-color: #fff;
+      text-align: center;
+      cursor: pointer;
+      margin: 0 2px;
+    }
+    .modal .nav li:hover{
+      background-color:aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="images">
+      <a href=""><img src="./img/1.jpg" alt=""></a>
+      <a href=""><img src="./img/2.jpg" alt=""></a>
+      <a href=""><img src="./img/3.jpg" alt=""></a>
+    </div>
+    <div class="useButton left">&lt;</div>
+    <div class="useButton right">&gt;</div>
+    <div class="modal">
+      <div class="title">
+        <h2>黄河三峡风景如画</h2>
+      </div>
+      <div class="nav">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

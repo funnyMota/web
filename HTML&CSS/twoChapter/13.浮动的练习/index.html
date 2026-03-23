@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="reset.css" />
+  <style>
+    .main {
+      background-color: #fff;
+    }
+
+    .main nav {
+      height: 60px;
+      line-height: 60px;
+      background-color: #47464A;
+      text-align: center;
+      color: #999;
+    }
+
+    .main nav a {
+      color: inherit;
+      margin: 0 38px;
+    }
+
+    .main nav a.select {
+      color: tomato;
+    }
+
+    .container {
+      width:1120px;
+      margin: 0 auto;
+    }
+
+    .container .choose-area {
+      border: 1px solid #ccc;
+      margin: 30px 0;
+      font-size: 14px;
+      line-height: 30px;
+      padding: 0 25px;
+    }
+
+    .container .choose-area .choose-item {
+      margin: 1em 0;
+      border-bottom: 1px dotted #ccc;
+    }
+     .container .choose-area .choose-item.no-line{
+      border-bottom: none;
+    }
+    .container .choose-area .choose-item .left {
+      color: #999;
+      float: left;
+    }
+
+    .container .choose-area .choose-item .right {
+      width: 1000px;
+      float: left;
+    }
+
+    .container .choose-area .choose-item .right li {
+      float: left;
+      margin: 0 9px;
+      padding: 0 6px;
+    }
+    .selected{
+      color: #fff;
+      background-color: tomato;
+      border-radius: 15px;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .movie{
+      font-size: 16px;
+    }
+    .movie .item{
+      float: left;
+      width: 160px;
+      text-align: center;
+      margin: 10px 32px 10px 0;
+
+    }
+    .movie .item:nth-child(6n){
+      margin-right: 0;
+    }
+    .movie .item img{
+      width: 160px;
+      height: 220px;
+    }
+    .name{
+      padding:2px 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .score{
+      line-height: 2.5;
+      color: #ffbb40;
+      font-style: italic;
+    }
+    .pager{
+      margin: 2em 0;
+      text-align: center;
+    }
+    .pager a{
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+    }
+    .pager a:hover{
+      border: 1px solid #ef4238;
+    }
+    .pager a.aselected{
+      color: white;
+      background-color: #ef4238;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <nav>
+      <a href="">正在热映</a>
+      <a href="">即将上映</a>
+      <a href="" class="select">经典影片</a>
+    </nav>
+    <div class="container">
+      <div class="choose-area clearfix">
+        <div class="choose-item clearfix">
+          <div class="left">类型：</div>
+          <div class="right">
+            <ul>
+              <li  class="selected"><a href="" >Lorem.</a></li>
+              <li><a href="">Sint.</a></li>
+              <li><a href="">Exercitationem?</a></li>
+              <li><a href="">Obcaecati.</a></li>
+              <li><a href="">A.</a></li>
+              <li><a href="">Adipisci.</a></li>
+              <li><a href="">Molestias.</a></li>
+              <li><a href="">Rerum.</a></li>
+              <li><a href="">Iure.</a></li>
+              <li><a href="">Praesentium.</a></li>
+              <li><a href="">Necessitatibus?</a></li>
+              <li><a href="">Officia?</a></li>
+              <li><a href="">Non!</a></li>
+              <li><a href="">Aliquam?</a></li>
+              <li><a href="">Fugiat.</a></li>
+              <li><a href="">Voluptates.</a></li>
+              <li><a href="">Veritatis!</a></li>
+              <li><a href="">Cupiditate?</a></li>
+              <li><a href="">Ex!</a></li>
+              <li><a href="">Ut?</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="choose-item clearfix">
+          <div class="left">类型：</div>
+          <div class="right">
+            <ul>
+              <li><a href="">Lorem.</a></li>
+              <li><a href="">Sint.</a></li>
+              <li><a href="">Exercitationem?</a></li>
+              <li><a href="">Obcaecati.</a></li>
+              <li><a href="">A.</a></li>
+              <li><a href="">Adipisci.</a></li>
+              <li><a href="">Molestias.</a></li>
+              <li><a href="">Rerum.</a></li>
+              <li><a href="">Iure.</a></li>
+              <li><a href="">Praesentium.</a></li>
+              <li><a href="">Necessitatibus?</a></li>
+              <li><a href="">Officia?</a></li>
+              <li><a href="">Non!</a></li>
+              <li><a href="">Aliquam?</a></li>
+              <li><a href="">Fugiat.</a></li>
+              <li><a href="">Voluptates.</a></li>
+              <li><a href="">Veritatis!</a></li>
+              <li><a href="">Cupiditate?</a></li>
+              <li><a href="">Ex!</a></li>
+              <li><a href="">Ut?</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="choose-item clearfix no-line">
+          <div class="left">类型：</div>
+          <div class="right">
+            <ul>
+              <li><a href="">Lorem.</a></li>
+              <li><a href="">Sint.</a></li>
+              <li><a href="">Exercitationem?</a></li>
+              <li><a href="">Obcaecati.</a></li>
+              <li><a href="">A.</a></li>
+              <li><a href="">Adipisci.</a></li>
+              <li><a href="">Molestias.</a></li>
+              <li><a href="">Rerum.</a></li>
+              <li><a href="">Iure.</a></li>
+              <li><a href="">Praesentium.</a></li>
+              <li><a href="">Necessitatibus?</a></li>
+              <li><a href="">Officia?</a></li>
+              <li><a href="">Non!</a></li>
+              <li><a href="">Aliquam?</a></li>
+              <li><a href="">Fugiat.</a></li>
+              <li><a href="">Voluptates.</a></li>
+              <li><a href="">Veritatis!</a></li>
+              <li><a href="">Cupiditate?</a></li>
+              <li><a href="">Ex!</a></li>
+              <li><a href="">Ut?</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="movie clearfix">
+        <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+               <div class="item">
+          <div>
+            <a href="">
+              <img src="./test.jpg" alt="">
+            </a>
+          </div>
+          <div class="name">
+            <a href="">复仇者联盟复仇者联盟复仇者联盟</a>
+          </div>
+          <div class="score">
+            9.8
+          </div>
+        </div>
+
+      </div>
+      <div class="pager">
+        <a href="">上一页</a>
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="" class="aselected">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+        <a href="">6</a>
+        <a href="">7</a>
+        <a href="">8</a>
+        <a href="">9</a>
+        <a href="">10</a>
+        <a href="">下一页</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
