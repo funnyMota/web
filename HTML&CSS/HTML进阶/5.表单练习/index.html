@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./reset.css">
+  <style>
+    .register{
+      width: 980px;
+      margin: 1em auto;
+    }
+    h2{
+      border-bottom: 1px solid #ddd;
+      font-size: 32px;
+      height: 18px;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+    h2 span{
+      background-color: #fff;
+      padding: 0 20px;
+    }
+    .form-area{
+      width: 430px;
+      margin: 0 auto;
+    }
+    .form-area .form-item{
+      margin: 50px 0;
+    }
+    .form-area .form-item .error-text{
+      position: absolute;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      right: -250px;
+      font-size: 12px;
+      color: #f45d90;
+    }
+    .form-area .form-item .errorinput{
+      border-color: #f45d90;
+    }
+    .clearfix::after{
+      content:"";
+      display:block;
+      clear:both;
+    }
+    .form-area .select .area,.form-area .select .phone{
+      float: left;
+    }
+    .form-area .select .area{
+      width: 140px;
+      border: 1px solid #ddd;
+      color: #757575;
+      line-height: 40px;
+      height: 40px;
+      box-sizing: border-box;
+      border-radius: 5px 0 0 5px;
+    }
+    .form-area .select .title{
+      height: 40px;
+      line-height: 40px;
+      padding:0 20px;
+      cursor:pointer;
+    }
+    .form-area .select .phone{
+      width: 290px;
+    }
+    .form-area .select .phone input{
+      border-radius:0 5px 5px 0;
+    }
+    .form-area .form-item{
+      position: relative;
+    }
+    .form-area .form-item .getcode{
+      position: absolute;
+      width: 130px;
+      height: 36px;
+      line-height: 36px;
+      background-color: #33B4DE;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      right: 2px;
+      top: 2px;
+    }
+    .form-area .form-item .getcode:hover{
+      opacity: 0.8;
+    }
+    .form-area .form-item .more a{
+      color: #33B4DE;
+    }
+    .form-area .form-item .more .checkbox{
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+    }
+    .form-area .form-item .more input:checked+.checkbox::after{
+      content:"";
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: #33B4DE;
+      margin-top: 3px;
+      margin-left: 3px;
+      border-radius: 3px;
+    }
+    .form-area .form-item:nth-child(4){
+      margin: 0px;
+    }
+    .form-area .form-item:nth-child(5){
+      margin:10px 0;
+    }
+    .form-area .form-item .register-btn{
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      color:#757575;
+      cursor: no-drop;
+    }
+    input[type="text"],input[type="password"]{
+      border: 1px solid #ddd;
+      width: 100%;
+      box-sizing: border-box;
+      height: 40px;
+      text-indent: 1em;
+      border-radius: 5px;
+    }
+    input[type="text"]:hover,input[type="password"]:hover{
+      border-color: #c0c4cc;
+    }
+    input[type="text"]:focus,input[type="password"]:focus{
+      border-color: #00a1d6;      
+    }
+  </style>
+</head>
+<body>
+  <div class="register">
+    <h2>
+      <span>注册</span>
+    </h2>
+    <div class="form-area">
+      <div class="form-item">
+        <input type="text" placeholder="账号" class="errorinput">
+        <span class="error-text">该账号已存在</span>
+      </div>
+      <div class="form-item">
+        <input type="password" placeholder="密码(6-16个字符组成，区分大小写)" class="errorinput">
+        <span class="error-text">该密码强度为弱</span>
+      </div>
+      <div class="form-item">
+        <div class="select clearfix">
+          <div class="area">
+            <div class="title">中国大陆</div>
+          </div>
+          <div class="phone">
+            <input type="text" placeholder="请输入常用的手机号">
+          </div>
+        </div>
+      </div>
+      <div class="form-item" style="position: relative;">
+        <input class="phonecode" type="text" placeholder="请输入短信验证码"/>
+        <button class="getcode">获取验证码</button>
+      </div>
+      <div class="form-item">
+        <label class="more">
+          <input type="checkbox" name="agree" style="display: none;">
+          <span class="checkbox"></span>
+          <span>我已阅读并同意<a href="#">《用户协议》</a>和<a href="#">《隐私政策》</a></span>
+        </label>
+      </div>
+      <div class="form-item">
+        <button class="register-btn">注册</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

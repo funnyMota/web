@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table caption{
+      font-size: 20px;
+      line-height: 40px;
+      height: 40px;
+    }
+    th,td{
+      border: 1px solid #999;
+      text-align: center;
+      padding: 20px 0;
+    }
+    thead tr{
+      background-color: #008c8c;
+      color: #fff;
+    }
+    tbody tr:nth-child(odd){
+      background-color: #eee;
+    }
+    tbody tr:hover{
+      background-color: #ccc;
+    }
+    tbody td:first-child{
+      color: chocolate;
+    }
+    tfoot td{
+      text-align: right;
+      padding-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>用户信息</caption>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>电话</th>
+        <th>邮箱</th>
+        <th>地址</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>张三</td>
+        <td>20</td>
+        <td>男</td>
+        <td>1234567890</td>
+        <td>zhangsan@example.com</td>
+        <td>北京</td>
+      </tr>
+      <tr>
+        <td>李四</td>
+        <td>21</td>
+        <td>女</td>
+        <td>1234567890</td>
+        <td>lisi@example.com</td>
+        <td>上海</td>
+      </tr>
+      <tr>
+        <td>王五</td>
+        <td>22</td>
+        <td>男</td>
+        <td>1234567890</td>
+        <td>wangwu@example.com</td>
+        <td>广州</td>
+      </tr>
+      <tr>
+        <td>赵六</td>
+        <td>23</td>
+        <td>女</td>
+        <td>1234567890</td>
+        <td>zhaoliu@example.com</td>
+        <td>深圳</td>
+      </tr>
+      <tr>
+        <td>孙七</td>
+        <td>24</td>
+        <td>男</td>
+        <td>1234567890</td>
+        <td>sunqi@example.com</td>
+        <td>成都</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">总计:5人</td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>

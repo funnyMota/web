@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      /* 先计算再继承 */
+      /* line-height: 2em; */
+
+      /* 先继承 再计算 */
+      line-height: 2;
+    }
+    .p1{
+      line-height: 40px;
+    }
+    .p2{
+      line-height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="p1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ut hic, repellendus, corrupti voluptatibus ex sequi ipsum voluptates officia cumque quisquam excepturi sunt iste, dolorum mollitia rerum pariatur ea sit!</p>
+    <p class="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae alias repellat earum odio fugit aut facilis, ab harum eos iste cum dolore molestias eius unde incidunt blanditiis eaque nesciunt delectus.</p>
+  </div>
+</body>
+</html>

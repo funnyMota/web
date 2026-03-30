@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button:focus{
+      outline: none;
+      background-color:red;
+    }
+    .radio-item .radio{
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid black;
+      margin-right: 5px;
+    }
+    .radio-item [type="radio"]{
+      display: none;
+    }
+    .radio-item input:checked ~span{
+      color:red;
+    }
+    .radio-item input:checked+.radio::after{
+      content: "";
+      display: block;
+      width: 7px;
+      height: 7px;
+      background-color: red;
+      border-radius: 50%;
+      margin-left: 2px;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    <button>按钮</button>
+  </p>
+  <label class="radio-item">
+    <input type="radio" name="sex">
+    <span class="radio"></span>
+    <span>选项1</span>
+  </label>
+  <label class="radio-item">
+    <input type="radio" name="sex">
+    <span class="radio"></span>
+    <span>选项1</span>
+  </label>
+</body>
+</html>

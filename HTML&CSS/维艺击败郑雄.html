@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>维艺传奇 - 勇士击败魔丸郑雄</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Serif SC', 'Microsoft YaHei', serif;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #eee;
+            overflow-x: hidden;
+        }
+
+        /* 星空背景 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 标题区 */
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.3) 0%, rgba(88, 24, 69, 0.5) 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(233, 69, 96, 0.5);
+            box-shadow: 0 0 60px rgba(233, 69, 96, 0.3);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.8);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(233, 69, 96, 0.8); }
+            to { text-shadow: 0 0 40px rgba(233, 69, 96, 1), 0 0 60px rgba(255, 107, 107, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ffd700;
+            letter-spacing: 3px;
+        }
+
+        /* 章节样式 */
+        .chapter {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .chapter-title {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .chapter-title .icon {
+            font-size: 2.5rem;
+        }
+
+        .chapter p {
+            line-height: 2;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* 角色卡片 */
+        .character-card {
+            background: linear-gradient(135deg, rgba(88, 24, 69, 0.8) 0%, rgba(233, 69, 96, 0.6) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            border-left: 5px solid #e94560;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card::before {
+            content: '☠️';
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+
+        .character-card.hero {
+            background: linear-gradient(135deg, rgba(0, 100, 0, 0.8) 0%, rgba(50, 205, 50, 0.6) 100%);
+            border-left-color: #32cd32;
+        }
+
+        .character-card.hero::before {
+            content: '⚔️';
+        }
+
+        .character-name {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .character-card.hero .character-name {
+            color: #32cd32;
+        }
+
+        .character-title {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .stat-value {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* 场景描述 */
+        .scene-box {
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            text-align: center;
+        }
+
+        .scene-box h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* 战斗过程 */
+        .battle-log {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .battle-entry {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e94560;
+            background: rgba(233, 69, 96, 0.1);
+            border-radius: 0 10px 10px 0;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .battle-entry.turn-hero {
+            border-left-color: #32cd32;
+            background: rgba(50, 205, 50, 0.1);
+            text-align: right;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .turn-label {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .action {
+            color: #fff;
+        }
+
+        .damage {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .heal {
+            color: #44ff44;
+            font-weight: bold;
+        }
+
+        /* 结局 */
+        .ending {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 140, 0, 0.3) 100%);
+            border: 3px solid #ffd700;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .ending h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .ending-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #fff;
+        }
+
+        .victory-badge {
+            font-size: 5rem;
+            margin: 20px 0;
+            animation: victoryPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes victoryPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .chapter {
+                padding: 25px;
+            }
+            .chapter-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <!-- 标题区 -->
+        <header class="hero-section">
+            <h1>⚔️ 维艺传奇 ⚔️</h1>
+            <p class="subtitle">勇士击败魔丸郑雄的史诗之战</p>
+        </header>
+
+        <!-- 第一章：乱世降临 -->
+        <section class="chapter">
+            <h2 class="chapter-title"><span class="icon">🌑</span> 第一章：魔丸降世</h2>
+            <p>
+                在遥远的东方大陆，天地初开之际，混沌中孕育出一颗邪恶魔丸。此丸吸收了世间所有的贪婪、嫉妒与怨恨，历经千年修炼，化为人形——名曰<strong>郑雄</strong>。
+            </p>
+            <p>
+                郑雄出世之日，天地变色，山河震颤。他所到之处，庄稼枯萎，河流干涸，百姓流离失所。传说中，他的双眼能发射毁灭红光，口中喷吐腐蚀黑雾，双手更是拥有撕裂大地的力量。
+            </p>
+            
+            <div class="scene-box">
+                <h3>📍 黑风岭 · 魔丸巢穴</h3>
+                <p>阴云密布，雷电交加，郑雄的黑暗城堡高耸入云，四周环绕着永不散去的毒雾</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-name">☠️ 郑雄 - 混沌魔丸</div>
+                <div class="character-title">"毁灭的化身，人间的灾祸"</div>
+                <p>
+                    郑雄并非凡人，而是由纯粹的恶念凝聚而成的魔物。他以吞噬人类的恐惧与绝望为生，每作乱一方，力量便增强一分。千年以来，无数勇士试图讨伐，却都沦为他力量的一部分。
+                </p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">邪恶值：</span>
+                        <span class="stat-value">9999+</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">破坏力：</span>
+                        <span class="stat-value">SSS级</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">狡猾度：</span>
+                        <span class="stat-value">★★★★★</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">致命技能：</span>
+                        <span class="stat-value">魔丸爆破</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二章：勇士崛起 -->
+        <section class="chapter">
+            <h2 class="chapter-title"><span class="icon">✨</span> 第二章：天命勇士</h2>
+            <p>
+                在郑雄的暴政笼罩大地之时，一位名叫<strong>维艺</strong>的年轻勇士悄然崛起。维艺出生在一个普通的村庄，自幼便展现出非凡的勇气与智慧。传说他的心脏中封印着上古光明神的力量，是千年来唯一能抗衡魔丸的天选之人。
+            </p>
+            <p>
+                维艺踏遍千山万水，寻得三件神器：光明圣剑、守护之盾、智慧之戒。他一路斩妖除魔，解救无数受苦的百姓，最终来到了郑雄盘踞的黑风岭。
+            </p>
+
+            <div class="scene-box">
+                <h3>📍 黎明村 · 最后的集结</h3>
+                <p>村民们在黎明前为维艺送行，将全村最珍贵的祝福注入勇士的铠甲之中</p>
+            </div>
+
+            <div class="character-card hero">
+                <div class="character-name">⚔️ 维艺 - 天命勇士</div>
+                <div class="character-title">"光明的传承者，正义的守护者"</div>
+                <p>
+                    维艺身负拯救苍生的使命，他的内心如钢铁般坚定，眼中燃烧着永不熄灭的希望之火。面对强大的魔丸郑雄，他没有丝毫畏惧，因为他知道，身后是千千万万期盼和平的百姓。
+                </p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">勇气值：</span>
+                        <span class="stat-value">100/100</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">战斗力：</span>
+                        <span class="stat-value">SSS级</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">智慧度：</span>
+                        <span class="stat-value">★★★★★</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">必杀技：</span>
+                        <span class="stat-value">圣光裁决</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三章：终极之战 -->
+        <section class="chapter">
+            <h2 class="chapter-title"><span class="icon">⚡</span> 第三章：终极之战</h2>
+            <p>
+                决战之日，乌云遮蔽了太阳，大地一片昏暗。维艺身披银光铠甲，手持光明圣剑，独自走进黑风岭的深处。郑雄早已等候多时，他的身形庞大如山，周身环绕着毁灭性的黑暗能量。
+            </p>
+
+            <div class="battle-log">
+                <div class="battle-entry">
+                    <div class="turn-label">🌑 郑雄的回合</div>
+                    <div class="action">魔丸发出震天咆哮，释放出「黑暗吞噬」！</div>
+                    <div class="damage">维艺受到 500 点暗影伤害，但守护之盾抵挡了大部分冲击！</div>
+                </div>
+
+                <div class="battle-entry turn-hero">
+                    <div class="turn-label">⚔️ 维艺的回合</div>
+                    <div class="action">维艺高举圣剑，发动「光明斩击」！</div>
+                    <div class="damage">郑雄受到 800 点神圣伤害，魔丸之躯出现裂痕！</div>
+                </div>
+
+                <div class="battle-entry">
+                    <div class="turn-label">🌑 郑雄的回合</div>
+                    <div class="action">郑雄暴怒，施展终极技能「魔丸爆破」！</div>
+                    <div class="damage">维艺被卷入爆炸中心，生命危急！</div>
+                </div>
+
+                <div class="battle-entry turn-hero">
+                    <div class="turn-label">⚔️ 维艺的回合</div>
+                    <div class="action">千钧一发之际，维艺激活智慧之戒，领悟了郑雄的弱点！</div>
+                    <div class="heal">维艺恢复 1000 点生命，全属性提升！</div>
+                </div>
+
+                <div class="battle-entry">
+                    <div class="turn-label">🌑 郑雄的回合</div>
+                    <div class="action">郑雄聚集全部黑暗能量，准备发动最终毁灭攻击！</div>
+                    <div class="damage">天地变色，末日降临！</div>
+                </div>
+
+                <div class="battle-entry turn-hero">
+                    <div class="turn-label">⚔️ 维艺的回合 - 最终一击</div>
+                    <div class="action">维艺汇聚全身力量与村民的祈愿，发动传说技能「圣光裁决」！</div>
+                    <div class="damage">致命一击！9999 点神圣伤害！郑雄的魔丸核心被彻底击碎！</div>
+                </div>
+            </div>
+
+            <p>
+                伴随着一声震天动地的巨响，郑雄庞大的身躯开始崩溃。他发出了不甘的嘶吼，但光明之力已经彻底净化了他的黑暗。魔丸破碎，化作漫天光点消散在风中。
+            </p>
+        </section>
+
+        <!-- 第四章：和平降临 -->
+        <section class="chapter">
+            <h2 class="chapter-title"><span class="icon">🌅</span> 第四章：黎明新生</h2>
+            <p>
+                随着郑雄的覆灭，笼罩大地的黑暗逐渐散去。第一缕阳光穿透云层，照耀在满目疮痍的大地上。河流重新流淌，庄稼开始生长，鸟儿再次在空中歌唱。
+            </p>
+            <p>
+                维艺站在黑风岭之巅，望着重生的世界，脸上露出欣慰的微笑。他并不是为了荣耀而战，而是为了守护那些他所珍视的一切。
+            </p>
+            <p>
+                人们从四面八方赶来，高呼着维艺的名字，将他奉为英雄。但维艺只是轻轻摇头，他说："真正的力量来自于大家的信念，我只是那个执剑的人。"
+            </p>
+        </section>
+
+        <!-- 结局 -->
+        <div class="ending">
+            <div class="victory-badge">🏆</div>
+            <h2>正义必胜！</h2>
+            <p class="ending-text">
+                维艺击败魔丸郑雄的故事，成为了世代传颂的传奇。<br><br>
+                它告诉我们：无论黑暗多么强大，<br>
+                只要心中有光，勇气常在，<br>
+                正义终将战胜邪恶，<br>
+                黎明必将到来。<br><br>
+                <span style="color: #ffd700; font-size: 1.3rem;">—— 维艺传奇 · 终 ——</span>
+            </p>
+        </div>
+
+        <footer>
+            <p>✨ 一个关于勇气、正义与希望的史诗故事 ✨</p>
+            <p style="margin-top: 10px; opacity: 0.6;">© 维艺传奇制作组</p>
+        </footer>
+    </div>
+
+    <script>
+        // 生成星空背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
