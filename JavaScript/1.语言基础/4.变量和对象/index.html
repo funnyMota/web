@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var user={
+    //   account:"zhangsan",
+    //   pwd:"123456",
+    //   gender:"男",
+    //   isVip:true,
+    //   age:18,
+    // }
+    // user.pwd="654321";
+    // console.log(user.pwd);
+    // user.tradePassword="123456";
+    // console.log(user.tradePassword);
+
+    // var user2;
+    // user2={
+    //   account:user.account
+    // }
+    // console.log(user.account);
+    // console.log(user2.account);
+    
+    var userInfo1={
+      name:"张三",
+      age:18,
+      sex:"男",
+      girlFriend:{
+        name:"李四",
+        age:18,
+        sex:"女",
+      }
+    }
+
+    var userInfo2={
+      name:"王五",
+      age:20,
+      sex:"男",
+      girlFriend:userInfo1.girlFriend
+    }
+    console.log(userInfo1);
+    console.log(userInfo2);
+
+    delete userInfo1.girlFriend;
+    console.log(userInfo1);
+
+    console.log(userInfo1["name"]);
+    var prop="name";
+    console.log(userInfo1[prop]);
+
+    var test={
+      "first name":"张三",
+      "last name":"李四",
+      "0":0,
+    }
+    console.log(test["first name"]);
+    console.log(test["0"]);
+    console.log(test[0]);//宿主环境会自动将数字转换成字符串
+
+    var a;
+    console.log(window);
+    var console;
+    console.log(window.console);
+
+    //why?
+    var name;
+    console.log(name);//因为window有个name 
+    console.log(typeof name);
+  </script>
+</body>
+</html>
