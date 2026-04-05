@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var a="123";
+    // var b=a;
+    // b="456";
+    // console.log(a,b);
+    // var abc={
+    //   name:"张三"
+    // }
+    // var abcd=abc;
+    // abcd.name="王五";
+    // console.log(abc.name,abcd.name);
+
+    var item={
+      name:"张三",
+      parent:{
+        name:"李四"
+      },
+      child:{
+        name:"王五"
+      }
+    }
+    var temp=item.parent;
+    item.parent=item.child;
+    item.child=temp;
+    console.log(item.parent.name,item.child.name);
+  </script>
+</body>
+</html>

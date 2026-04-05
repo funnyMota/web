@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var x=2023;
+    var result=x%4==0&&x%100!=0||x%400==0;
+    result && console.log(x+"是闰年");
+    result || console.log(x+"不是闰年");
+
+    var score=61;
+    score>=60&& console.log("及格");
+    score<60&& console.log("不及格");
+
+    var money=100001;
+    var month=12;
+    var rate=4;
+    var earnMoney=0;
+
+    money>100000 && (rate*=1.2);
+    earnMoney=money*rate/100/12*month;
+    console.log("赚了"+earnMoney);
+
+    var year=2025;
+    var result=year%4==0&&year%100!=0||year%400==0;
+    result && console.log("二月有29天");
+    result || console.log("二月有28天");
+  </script>
+</body>
+</html>

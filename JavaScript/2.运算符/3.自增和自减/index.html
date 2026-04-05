@@ -7,16 +7,17 @@
 </head>
 <body>
   <script>
-    var name="张三";
-    console.log(name);
-    console.log(test+1);
-    var rectWidth;
-    var rectHeight;
-    var rectArea;
+    var x=0;
+    x=x+1;
+    console.log(x++);
 
-    // console.log(test);
-    // var test;
-    // test="hello";
+    var x=1;
+    var y=x+ x++ * ++x;
+    console.log(y);
+
+    var x=1;
+    var y=x+x++*(x=x+x++*++x)+x;
+    console.log(y);
   </script>
 </body>
 </html>

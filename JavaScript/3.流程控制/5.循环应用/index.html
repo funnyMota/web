@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var sum=0;
+    // for(var i=0;i<=100;i++){
+    //   sum+=i;
+    // }
+    // console.log(sum);
+    // var isFind=false;
+    // for(var i=135;i<=165;i++){
+    //   if(i%26===0){
+    //     isFind=true;
+    //     break;
+    //   }
+    // }
+    // if(isFind)
+    //   console.log("找到了");
+
+    // var isFind=false;
+    // for(var i=135;i<=165;i++){
+    //   if(i%26===0){
+    //     console.log(i);
+    //     isFind=true;
+    //     break;
+    //   }
+    // }
+    // if(!isFind)
+    //   console.log("没有找到");
+
+    //输出素数
+
+    
+
+    // for(var j=2;j<=100;j++){
+    //   var record=0;
+    //   for(var i=1;i<=j;i++){
+    //     if(j%i===0){
+    //       record++;
+    //     }
+    //   }
+    //   if(record==2){
+    //     console.log(j+"是素数");
+    //   }
+    // }
+
+    // for(var i=0;i<3;i++){
+    //   for(var j=0;j<5;j++){
+    //     console.log("*")
+    //   }
+    //   console.log("\n");
+    // }
+    // var str="";
+    // for(var i=1;i<=5;i++){
+    //   for(var j=0;j<i;j++){
+    //     str+="*";
+    //   }
+    //   str+="\n";
+    // }
+    // console.log(str);
+    
+    // var str="";
+    // var r=5;
+    // for(var i=1;i<=r;i++){
+    //   for(var j=0;j<r-i;j++){
+    //     str+=" ";
+    //   }
+    //   for(var k=0;k<2*i-1;k++){
+    //     str+="*";
+    //   }
+    //   str+="\n";
+    // }
+    // console.log(str);
+
+    var sum=0;
+    for(var i=2;i<=100;i++){
+      var isFind=true;
+      for(var j=2;j<i;j++){
+        if(i%j===0){
+          isFind=false;
+          break;
+        }
+      }
+      if(isFind){
+        sum+=i;
+      }
+    }
+    console.log(sum); 
+  </script>
+</body>
+</html>
