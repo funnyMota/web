@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function test(){
+      console.log(arguments);
+      var newArr=Array.from(arguments);
+      console.log(newArr);
+      console.log(Array.isArray(newArr));
+    }
+    test(8,7,2,5,3);
+
+    var arr=new Array(10);
+    arr.fill("abc");
+    console.log(arr);
+    var arr=[1,2,3,4,5];
+    arr.reverse();
+    console.log(arr);
+    var arr=[1,22,3,42,5];
+    arr.sort((a,b)=>{
+      return a-b;
+    });
+    console.log(arr);
+
+    var arr=[1,2,3,4,5];
+    arr.sort((a,b)=>{
+      return Math.random()-0.5;
+    })
+    console.log(arr);
+
+    
+  </script>
+</body>
+</html>

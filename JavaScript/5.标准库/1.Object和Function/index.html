@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var a=new Object(null);
+    // console.log(a)
+    // var a=new Object(undefined);
+    // console.log(a)
+    // var a=new Object(1);
+    // console.log(a)
+    // var a=Object.keys({a:1,b:2});
+    // console.log(a)
+    // var a=Object.values({a:1,b:2});
+    // console.log(a)
+    // var a=Object.entries({a:1,b:2});
+    // console.log(a)
+    var obj={a:1,b:2}
+    obj.toString=function(){
+      return obj.a+obj.b;
+    }
+    console.log(obj.toString())
+    console.log(obj.valueOf()===obj)
+
+    var obj={
+      toString:function(){
+        return "1";
+      }
+    }
+    console.log(obj+1)
+    var obj={
+      valueOf:function(){
+        return 1; 
+      }
+    }
+    console.log(obj+1)
+
+    function sayHello(){
+      console.log(this.name,this.age);
+    }
+    var user1={
+      name:"张三",
+      age:20,
+    }
+    var user2={
+      name:"李四",
+      age:30,
+    }
+
+    sayHello.apply(user1);
+    sayHello.call(user2);
+
+    function test(){
+      console.log(arguments);
+      return [].slice.call(arguments);
+    }
+    var arr=test(23,4,5,7,8,8,7);
+    console.log(arr);
+
+    function greet(greeting, punctuation) {
+      console.log(greeting + ', ' + this.name + punctuation);
+    }
+
+    var person = { name: '张三' };
+
+    greet.call(person, '你好', '！');
+    greet.apply(person, ['你好', '！']);
+    var boundGreet = greet.bind(person, '你好');
+    boundGreet('！');
+
+  </script>
+</body>
+</html>

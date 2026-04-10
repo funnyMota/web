@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //递归
+    // function f(n){
+    //   if(n===1||n===2){
+    //     return 1;
+    //   }
+    //   return f(n-1)+f(n-2);
+    // }
+    // console.log(f(5));
+    
+    //阶乘
+    // function f(n){
+    //   if(n===1){
+    //     return 1;
+    //   }
+    //   return n*(f(n-1));
+    // }
+    // console.log(f(5));
+
+    // function hannuo(no1,no2,no3,n){
+    //   if(n===1){
+    //     console.log(no1+'-->'+no3);
+    //   }else{
+    //     hannuo(no1,no3,no2,n-1);
+    //     console.log(no1+'-->'+no3);
+    //     hannuo(no2,no1,no3,n-1);
+    //   }
+    // }
+    // hannuo('A','B','C',3);
+
+
+    // function factorial(n, result = 1) {
+    //   if (n <= 1) return result;
+    //   return factorial(n - 1, n * result);  // 最后一条语句是纯递归调用
+    // }
+    function flatten(arr, depth = Infinity) {
+      return arr.reduce((acc, item) => {
+          if (Array.isArray(item) && depth > 0) {
+              return acc.concat(flatten(item, depth - 1));
+          }
+          return acc.concat(item);
+      }, []);
+    }
+
+
+    console.log(flatten([1, [2, [3, [4]]], 5, 6])); 
+    // 期望: [1, 2, 3, 4, 5, 6]
+
+    // 要求：支持指定拍平层数，如：
+    console.log(flatten([1, [2, [3, [4]]]], 2));    
+    // 期望: [1, 2, 3, [4]]  (只拍平2层)
+
+  </script>
+</body>
+</html>

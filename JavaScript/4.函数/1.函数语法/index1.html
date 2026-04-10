@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // test();
+    // function test(){
+    //   var b=3;
+    //   a=3;
+    //   console.log("******");
+    // }
+    // test();
+    // console.log(window);
+  
+    // function isOdd(num){
+    //   if(num%2==0){
+    //     return false;
+    //   }else{
+    //     return true;
+    //   }
+    // }
+
+    // console.log(isOdd(3)?"是奇数":"是偶数");
+  
+    // var arr=[1,2,3,4,5];
+    // function deleteArray(arr,index){
+    //   arr.splice(-index,index);
+    // }
+    // deleteArray(arr,3);
+    // console.log(arr);
+
+    /**
+     * sumOfArray:对数组求和
+     * @param {Array} arr 需要求和的数组
+     * @return {Number} 数组元素的和 
+     * 
+    */
+   
+    function sumOfArray(arr){
+      var sum=0;
+      for(var i=0;i<arr.length;i++){
+        sum+=arr[i];
+      }
+      return sum;
+    }
+    console.log(sumOfArray([1,2,3,4,5])+sumOfArray([6,7,8,9,10]));
+  </script>
+</body>
+</html>

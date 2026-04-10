@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../../../common/BetterFunction.js"></script>
+  <script>
+    var a="abcdabwa";
+    console.log(BetterFunction.getTopFreaInArray(a.split('')));
+    // console.log(a.split('').reduce((pre,item)=>{
+    //   pre[item]=pre[item]?pre[item]+1:1;
+    //   return pre;
+    // },{}));
+
+    //将字符串空格去掉,把每个单词字母转换为大小写
+    var a="hello  world   js";
+    // function bigCamel(s){
+    //   var result='';
+    //   var empties=" \b\n\t\r";
+    //   for(var i=0;i<s.length;i++){
+    //     if(!empties.includes(s[i])){
+    //       if(empties.includes(s[i-1])||i===0){
+    //         result+=s[i].toUpperCase();
+    //       }else{
+    //         result+=s[i];
+    //       }
+    //     }
+    //   }
+    //   return result;
+    // }
+    // console.log(bigCamel(a));
+    function bigCamel(s){
+      return s.split(' ').filter((item)=>{
+        return item.length>0;
+      }).map((item)=>{
+        return item[0].toUpperCase()+item.substring(1).toLowerCase();
+      }).join('');
+    }
+    console.log(bigCamel(a));
+    // console.log(a.split(' ').map((item)=>{
+    //   return item.charAt(0).toUpperCase()+item.slice(1);
+    // }).reduce((start,end)=>{
+    //   return start+end;
+    // }),'')
+    //书写一个函数,产生一个指定长度随机字符串,字符串由大小写字母和数字组成
+    function getRandomString(length){
+      var str='';
+      var template='';
+      for(var i=65;i<65+26;i++){
+        template+=String.fromCharCode(i);
+      }
+      for(var i=97;i<97+26;i++){
+        template+=String.fromCharCode(i);
+      }
+      for(var i=48;i<48+10;i++){
+        template+=String.fromCharCode(i);
+      }
+      for(var i=0;i<length;i++){
+        var randomNum=Math.floor(Math.random()*template.length);
+        str+=template[randomNum];
+      }
+      return str;
+    }
+    console.log(getRandomString(10));
+    //排序
+    var str="fbnasgcz";
+    console.log(str.split('').sort().join(''));
+    //身份证号码解析
+    var str="500001200303220216";
+    function getInfoFromIdCard(str){
+      return {
+        birthYear:str.substr(6,4),
+        birthMonth:str.substr(10,2),
+        birthDay:str.substr(12,2),
+        sex:str[str.length-2]%2==0?'女':'男'
+      }
+    }
+
+    console.log(getInfoFromIdCard(str));
+  </script>
+</body>
+</html>
