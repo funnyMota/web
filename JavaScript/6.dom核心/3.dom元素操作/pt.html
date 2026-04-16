@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 600px;
+      height: 600px;
+      border: 1px solid black;
+      position: relative;
+    }
+    .test{
+      width: 200px;
+      height: 200px;
+      background-size: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+  </div>
+  <script>
+    var divs=document.querySelector(".container");
+    var images=["./images/piece_1.png","./images/piece_2.png","./images/piece_3.png","./images/piece_4.png","./images/piece_5.png","./images/piece_6.png"
+      ,"./images/piece_7.png","./images/piece_8.png"]
+    var imagePosition=initPosition();
+    var x=0;
+    var y=0;
+    var dq=[0,1,2,3,4,5,6,7,8];
+    for(var i=0;i<8;i++){
+      var div=document.createElement("div");
+      div.classList.add("test");
+      div.style.backgroundImage=`url(${images[imagePosition[i]]})`
+      div.style.position="absolute";
+      div.style.left=`${x}px`;
+      div.style.top=`${y}px`;
+      if(i==2||i==5){
+        x=0;
+        y+=200;
+      }else{
+        x+=200;
+      }
+      btnClick(div,i);
+      divs.appendChild(div)
+    }
+    var Kx=400;
+    var Ky=400;
+    var count=0;
+    function btnClick(btn,i){
+      btn.onclick=function(){
+        var btnx=parseInt(this.style.left);
+        var btny=parseInt(this.style.top);
+        if(btnx==(Kx-200)&&btny==Ky||(btnx-200)==Kx&&btny==Ky||btnx==Kx&&btny==(Ky-200)||btnx==Kx&&(btny-200)==Ky){
+          var newX,newY;
+          newX=Kx;
+          newY=Ky;
+          Kx = btnx;
+          Ky = btny;
+          this.style.left=`${newX}px`;
+          this.style.top=`${newY}px`;
+          var indexI=imagePosition.indexOf(i);
+          var index8=imagePosition.indexOf(8)
+          var temp = imagePosition[indexI];
+          imagePosition[indexI] = imagePosition[index8];
+          imagePosition[index8] = temp;
+        }
+        if(JSON.stringify(imagePosition) === JSON.stringify(dq)){
+          alert("正确")
+        }
+      }
+    }
+
+    function initPosition(){
+      var rNumber=[];
+      while(rNumber.length<8){
+        var i=Math.floor(Math.random()*8);
+        if(rNumber.includes(i)){
+          continue;
+        }
+        rNumber.push(i);
+      }
+      rNumber.push(8);
+      return rNumber;
+    }
+  </script>
+</body>
+</html>

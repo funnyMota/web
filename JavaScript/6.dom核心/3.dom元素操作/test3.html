@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p style="display: none;" class="p">库存最小值:0</p>
+  <div class="container">
+    库存:
+    <button data-plus="-1000">-1000</button>
+    <button data-plus="-100">-100</button>
+    <button data-plus="-10">-10</button>
+    <button data-plus="-1">-</button>
+    <span class="value">0</span>
+    <button data-plus="1">+</button>
+    <button data-plus="10">+10</button>
+    <button data-plus="100">+100</button>
+    <button data-plus="1000">+1000</button>
+  </div>
+  <script>
+    var list=document.querySelector(".container");
+    var btns=list.querySelectorAll("button");
+    var value=document.querySelector(".value");
+    var p=document.querySelector(".p");
+    for(var i=0;i<btns.length;i++){
+      btns[i].onclick=function(){
+        var n=parseInt(this.dataset.plus);
+        var y=parseInt(value.innerText);
+        value.innerText=y+n
+        if(parseInt(value.innerText)<0){
+          value.innerText=0
+          p.style.display="block";
+        }else{
+          p.style.display="none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

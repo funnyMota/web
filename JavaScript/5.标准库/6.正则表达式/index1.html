@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var reg=`^\d([0-9]){10}$`;
+    var reg=`^(\w{6,12})$`
+    var reg=`^(\d{3})-(\d{4,8})$`
+    var reg=`^\w+@\w+(\.\w+){1,2}$`
+    var reg=`^-?\d+(\.\d+)?$`
+
+    // var reg=/^\d([0-9]){10}$/;
+    // if(reg.test("12345067891")){
+    //   console.log("ok");
+    // }
+
+    var reg1=/^(\w{6,12})$/;
+    var reg2=new RegExp(reg1);
+    var reg3=RegExp(reg1);
+    
+    if(reg1===reg2){
+      console.log("12ok");
+    }
+    if(reg1===reg3){
+      console.log("13ok");
+    }
+  </script>
+</body>
+</html>

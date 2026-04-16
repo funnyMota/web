@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap{
+      width: 300px;
+      line-height: 2;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+    .wrap dt{
+      background-color: orange;
+    }
+    .wrap dt dl{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <dl></dl>
+  </div>
+  <script>
+    var menu=[{
+      name:'菜单一',
+      children:[
+        "商品一",
+        "商品二",
+        "商品三",
+        "商品四",
+      ]
+    },{
+      name:'菜单二',
+      children:[
+        "商品一",
+        "商品二",
+        "商品三",
+        "商品四",
+      ]
+    },{
+      name:'菜单三',
+      children:[
+        "商品一",
+        "商品二",
+        "商品三",
+        "商品四",
+      ]
+    }];
+    var dl=document.querySelector("dl");
+    init();
+    function init(){
+      initMenu(menu);
+      function initMenu(arr){
+        for(var i=0;i<arr.length;i++){
+          var children=arr[i].children;
+          var dt=document.createElement("dt");
+          dt.innerText=arr[i].name;
+          dt.onclick=click(i);
+          dl.append(dt);
+          for(var j=0;j<children.length;j++){
+            var dd=document.createElement("dd");
+            dd.innerText=`${children[j]}`;
+            dt.appendChild(dd)
+          }
+        }
+      }
+      function click(i){
+        var index=i;
+        var flag=false;
+        return function(e){
+          if(e.target.tagName==="DT"){
+            for(var i=e.target.children.length-1;i>=0;i--){
+              if(flag){
+                e.target.children[i].style="display:block";
+              }else{
+                e.target.children[i].style="display:none";
+              }
+            }
+            flag=!flag;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

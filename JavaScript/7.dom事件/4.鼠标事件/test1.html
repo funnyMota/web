@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+    }
+    .imgBox{
+      width:400px;
+      height: 400px;
+      border: 2px solid #ccc;
+      position: relative;
+      background-clip: border-box;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    .originImg{
+      width:400px;
+      height: 400px;
+    }
+    .imgShade{
+      display: none;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 200px;
+      height: 200px;
+      background-color: rgba(0, 0, 0, 0.5);
+      cursor: move;
+    }
+    .imgZoom{
+      width:400px;
+      height: 400px;
+      border: 2px solid #ccc;
+      position: fixed;
+      background-clip: border-box;
+      left: 440px;
+      top: 20px;
+      margin-left: 20px;
+      display: none;
+      overflow: hidden;
+    }
+    .newImg{
+      position: absolute;
+      width:800px;
+      height:800px;
+    }
+  </style>
+</head>
+<body>
+  <div class="imgBox">
+    <img class="originImg" src="https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/403512/4/12421/44497/69b81afdF16f82055/0083320320901df2.png.avif" alt="">
+    <div class="imgShade"></div>
+  </div>
+  <div class="imgZoom">
+    <img class="newImg" src="https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/403512/4/12421/44497/69b81afdF16f82055/0083320320901df2.png.avif" alt="">
+  </div>
+
+  <script>
+    var imgBox=document.querySelector(".imgBox");
+    var originImg=document.querySelector(".originImg");
+    var imgShade=document.querySelector(".imgShade");
+    var imgZoom=document.querySelector(".imgZoom");
+    var newImg=document.querySelector(".newImg");
+
+    
+    var originImgStyle=getComputedStyle(originImg);
+    var originImgWidth=parseInt(originImgStyle.width);
+    var originImgHeight=parseInt(originImgStyle.height);
+    var imgShadeStyle=getComputedStyle(imgShade);
+    var imgShadeWidth=parseInt(imgShadeStyle.width);
+    var imgShadeHeight=parseInt(imgShadeStyle.height);
+
+    imgBox.onmousemove=function(e){
+      var pageX=e.pageX-100;
+      var pageY=e.pageY-100;
+      imgShade.style="display:block";
+      imgZoom.style="display:block";
+      imgShade.style.left=pageX+"px";
+      imgShade.style.top=pageY+"px";
+      newImg.style.left=-(pageX*2)+"px";
+      newImg.style.top=-(pageY*2)+"px";
+      if((pageX)+imgShadeWidth>(originImgWidth)){
+        imgShade.style.left=originImgWidth-imgShadeWidth+"px";
+        newImg.style.left=-originImgWidth+"px";
+      }
+      if((pageY)+imgShadeWidth>(originImgHeight)){
+        imgShade.style.top=originImgHeight-imgShadeHeight+"px";
+        newImg.style.top=-originImgHeight+"px";
+      }
+      if((pageX)<0){
+        imgShade.style.left=0+"px";
+        newImg.style.left=-0+"px";
+      }
+      if((pageY)<0){
+        imgShade.style.top=0+"px";
+        newImg.style.top=-0+"px";
+      }
+      imgBox.onmouseleave=function(e){
+        imgShade.style="display:none";
+        imgZoom.style="display:none";
+        originImg.onmousemove=null;
+      }
+    }
+
+    // var imgBox = document.querySelector(".imgBox");
+    // var imgShade = document.querySelector(".imgShade");
+    // var imgZoom = document.querySelector(".imgZoom");
+    // var newImg = document.querySelector(".newImg");
+
+    // var originImgStyle = getComputedStyle(document.querySelector(".originImg"));
+    // var originImgWidth = parseInt(originImgStyle.width);
+    // var originImgHeight = parseInt(originImgStyle.height);
+    // var imgShadeStyle = getComputedStyle(imgShade);
+    // var imgShadeWidth = parseInt(imgShadeStyle.width);
+    // var imgShadeHeight = parseInt(imgShadeStyle.height);
+
+    // imgBox.addEventListener("mousemove", function (e) {
+    //   // 计算相对于 imgBox 的坐标
+    //   var rect = imgBox.getBoundingClientRect();
+    //   var x = e.pageX - rect.left - window.scrollX - imgShadeWidth / 2;
+    //   var y = e.pageY - rect.top - window.scrollY - imgShadeHeight / 2;
+
+    //   // 边界限制
+    //   if (x < 0) x = 0;
+    //   if (y < 0) y = 0;
+    //   if (x + imgShadeWidth > originImgWidth) x = originImgWidth - imgShadeWidth;
+    //   if (y + imgShadeHeight > originImgHeight) y = originImgHeight - imgShadeHeight;
+
+    //   imgShade.style.display = "block";
+    //   imgZoom.style.display = "block";
+    //   imgShade.style.left = x + "px";
+    //   imgShade.style.top = y + "px";
+    //   newImg.style.left = -(x * 2) + "px";
+    //   newImg.style.top = -(y * 2) + "px";
+    // });
+
+    // imgBox.addEventListener("mouseleave", function () {
+    //   imgShade.style.display = "none";
+    //   imgZoom.style.display = "none";
+    // });
+
+  </script>
+</body>
+</html>

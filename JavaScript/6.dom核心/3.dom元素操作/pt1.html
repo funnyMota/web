@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="game">
+
+  </div>
+  <script>
+    var gameConfig={
+      width:500,
+      height:500,
+      rows:3,
+      cols:3,
+      imgurl:"./images/puzzle_500x500.png",
+      dom:document.getElementById("game") 
+    };
+    gameConfig.pieceWidth=gameConfig.width/gameConfig.cols;
+    gameConfig.pieceHeight=gameConfig.height/gameConfig.rows;
+    gameConfig.pieceNumber=gameConfig.rows*gameConfig.cols;
+    var blocks=[];
+    function Block(left,top,isVisible){
+      this.left=left;
+      this.top=top;
+      this.correctLeft=this.left;
+      this.correctTop=this.top;
+      this.isVisible=isVisible;
+      this.dom=document.createElement("div");
+      this.dom.style.width =gameConfig.pieceWidth+"px";
+      this.dom.style.height =gameConfig.pieceHeight+"px";
+      this.dom.style.background=`url("${gameConfig.imgurl}") -${this.correctLeft}px -${this.correctTop}px`;
+      this.dom.style.position="absolute";
+      this.dom.style.border="1px solid black";
+      this.dom.style.boxSizing="border-box";
+      this.dom.style.cursor="pointer"
+      if(!isVisible){
+        this.dom.style.display="none"
+      }
+      gameConfig.dom.appendChild(this.dom);
+      this.show=function(){
+        this.dom.style.left=this.left+"px";
+        this.dom.style.top=this.top+"px";
+      }
+      this.show();
+    }
+
+    function init(){
+      initGameDom();
+      initBlocksArray();
+      shuffle();
+      regEvent();
+      function initGameDom(){
+        gameConfig.dom.style.width=gameConfig.width+"px";
+        gameConfig.dom.style.height=gameConfig.height+"px";
+        gameConfig.dom.style.border="2px solid #ccc";
+        gameConfig.dom.style.position="relative";
+      }
+      function initBlocksArray(){
+        for(var i=0;i<gameConfig.rows;i++){
+          for(var j=0;j<gameConfig.cols;j++){
+            var isVisible=true;
+            if(i===gameConfig.rows-1&&j===gameConfig.cols-1){
+              isVisible=false;
+            }
+            blocks.push(new Block(j*gameConfig.pieceWidth ,i*gameConfig.pieceHeight,isVisible))
+          }
+        }
+      }
+      function shuffle(){
+        for(var i=0;i<blocks.length-1;i++){
+          var index=getRandom(0,blocks.length-2);
+          exchange(blocks[i],blocks[index])
+        }
+        blocks.forEach(function(b){
+          b.show();
+        })
+      }
+      function getRandom(min,max){
+        return Math.floor(Math.random()*(max+1-min)+min);
+      }
+      function regEvent(){
+        var inVisibleBlock=blocks.find(function(b){
+          return !b.isVisible;
+        })
+        blocks.forEach(function(b){
+          b.dom.onclick=function(){
+            if(b.top===inVisibleBlock.top&&Math.abs(b.left-inVisibleBlock.left)===gameConfig.pieceWidth
+            ||b.left===inVisibleBlock.left&&Math.abs(b.top-inVisibleBlock.top)===gameConfig.pieceHeight)
+            exchange(b,inVisibleBlock)
+            examine();
+          }
+        })
+      }
+      function exchange(b1,b2){
+        var temp=b1.left;
+        b1.left=b2.left;
+        b2.left=temp;
+        var temp=b1.top;
+        b1.top=b2.top;
+        b2.top=temp;
+        b1.show();
+        b2.show();
+      }
+      function examine(){
+        var count=0;
+        blocks.forEach((item)=>{
+          if(item.left==item.correctLeft&&item.top==item.correctTop){
+            count++;
+          }
+        })
+        if(count==9){
+          alert("游戏结束")
+        }
+      }
+    }
+    init();
+  </script>
+</body>
+</html>

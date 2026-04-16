@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <p style="display: none;">不能添加为空</p>
+    <div class="input">
+      <input type="text">
+      <button>添加</button>
+    </div>
+    <ul class="list">
+      <li>项目1</li>
+      <li>项目2</li>
+    </ul>
+  </div>
+  <script>
+    var btn=document.querySelector("button");
+    var list=document.querySelector(".list")
+    var inp=document.querySelector("input");
+    btn.onclick=function(){
+      if(isNaN(inp.value.trim())){
+        var li=document.createElement("li");
+        li.innerText=inp.value;
+        list.appendChild(li);
+        inp.value="";
+      }else{
+        alert("请输入");
+      }
+    }
+  </script>
+</body>
+</html>

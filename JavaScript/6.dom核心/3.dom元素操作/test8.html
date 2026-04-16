@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      line-height: 100px;
+      text-align: center;
+    }
+    .font{
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <span class="font">张</span>
+  </div>
+  <button class="maxzoom">放大</button>
+  <button class="minzoom">缩小</button>
+  <script>
+    var maxzoom=document.querySelector(".maxzoom");
+    var minzoom=document.querySelector(".minzoom");
+    var font=document.querySelector(".font")
+    maxzoom.onclick=function(){
+      var size=parseInt(getComputedStyle(font).fontSize);
+      font.style.fontSize=`${size+2}px`;
+    }
+    minzoom.onclick=function(){
+      var size=parseInt(getComputedStyle(font).fontSize);
+      font.style.fontSize=`${size-2}px`;
+    }
+  </script>
+</body>
+</html>

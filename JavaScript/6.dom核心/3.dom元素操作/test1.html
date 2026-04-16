@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <p>
+      <button class="btnAll">清空</button>
+    </p>
+    <ul class="list">
+      <li>项目1<button>删除</button></li>
+      <li>项目2<button>删除</button></li>
+      <li>项目3<button>删除</button></li>
+      <li>项目4<button>删除</button></li>
+      <li>项目5<button>删除</button></li>
+      <li>项目6<button>删除</button></li>
+      <li>项目7<button>删除</button></li>
+      <li>项目8<button>删除</button></li>
+      <li>项目9<button>删除</button></li>
+      <li>项目10<button>删除</button></li>
+    </ul>
+  </div>
+  <script>
+    var btnAll=document.querySelector(".btnAll");
+    btnAll.onclick=()=>{
+      var ul=document.querySelector(".list");
+      // for (var i = ul.children.length - 1; i >= 0; i--) {
+      //   ul.removeChild(ul.children[i]);
+      // }
+      ul.innerHTML=""
+    }
+    var ul=document.querySelector(".list");
+    var btns=ul.querySelectorAll("button");
+    Array.from(btns).forEach(function(btn){
+      btn.onclick=function(){
+        btn.parentNode.remove();
+      }
+    })
+
+    // for(var i=0;i<btns.length;i++){
+    //   //regEvent(btns[i])//固定变量值
+    //   (function(btn){
+    //     btn.onclick=function(){
+    //       // btn.parentNode.remove();
+    //       // ul.removeChild(btn.parentNode);
+    //     }
+    //   })(btns[i]);
+    // }
+
+    // function regEvent(btn){
+    //   btn.onclick=function(){
+    //     ul.removeChild(btn.parentNode)
+    //   }
+    // }
+  </script>
+</body>
+</html>

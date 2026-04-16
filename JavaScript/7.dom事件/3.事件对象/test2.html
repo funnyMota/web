@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img{
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+
+  </div>
+  <img src="" alt="">
+  <script>
+    var arr=["./images/piece_1.png","./images/piece_2.png","./images/piece_3.png","./images/piece_4.png"]
+    var div=document.querySelector("div");
+    var img=document.querySelector("img");
+    init();
+    function init(){
+      img.src=`${arr[0]}`;
+      for(var i=0;i<arr.length;i++){
+        var button=document.createElement("button");
+        button.innerText=`第${i+1}图片`
+        button.onclick=click(i);
+        div.appendChild(button);
+      }
+      function click(i){
+        return function(e){
+          img.src=`${arr[i]}`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

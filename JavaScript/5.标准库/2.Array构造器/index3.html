@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <ul id="list">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul> -->
+  <script>
+    // const text = "商品价格：苹果 12.5 元，香蕉 8 元，西瓜 15.8 元";
+    // const textPrice=text.match(/\d+(\.\d+)?/g)
+    // console.log(textPrice);
+    // const arr = [1, 2, 3, 4, 5];
+
+    // const evens = arr.reduce((acc, item) => {
+    //   if (item % 2 === 0) {
+    //     acc.push(item);
+    //   }
+    //   return acc; // 必须返回累加器！
+    // }, []); // 初始值是空数组
+    // console.log(evens)
+    // randomDate("2024-01-01","2025-01-01");
+    // function randomDate(startStr,endStr){
+    //   var date1=new Date(startStr);
+    //   var date2=new Date(endStr);
+    //   var date3=new Date();
+    //   var time=Math.abs(Math.floor(Math.random()*(date2-date1)+date1.getTime()));
+    //   date3.setTime(time);
+    //   console.log(date3);
+    // }
+
+    // var divs=document.querySelectorAll(".box");
+    // divs.classList.add("active")
+    //  var ul=document.querySelector("#list");
+    //  var li=ul.querySelectorAll("li")
+    //  for(var i=li.length-1;i>=0;i--){
+    //     ul.appendChild(li[i]);
+    //  }
+//     const products = [
+//   { name: "苹果", price: 5 },
+//   { name: "香蕉", price: 3 },
+//   { name: "西瓜", price: 8 }
+// ];
+
+//     let test=products.reduce((acc,item)=>{
+//       acc[item.name]=item.price;
+//       return acc;
+//     },{})
+//     console.log(test)
+
+    // const nums = [10, 20, 30, 40];
+    // var test=nums.reduce((acc,item)=>{
+    //   acc*=item;
+    //   return acc;
+    // },1)
+    // console.log(test);
+
+//     const users = [
+//   { id: 1, name: "张三" },
+//   { id: 2, name: "李四" },
+//   { id: 3, name: "王五" }
+// ];
+
+//     var test=users.reduce((acc,item)=>{
+//       acc[item.id]=item.name;
+//       return acc;
+//     },{})
+//     console.log(test);
+      const text=/^\w+@\w+\.\w+$/;
+      const result=text.test("test_123@qq.com");
+      console.log(result);
+      
+    </script>
+</body>
+</html>

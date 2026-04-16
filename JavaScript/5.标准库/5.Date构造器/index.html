@@ -6,6 +6,32 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    // const date = new Date();
+    // console.log(date.getFullYear());
+    // console.log(date.getMonth()==12?date.getMonth():date.getMonth()+1);
+    // console.log(date.getDate());
+    // console.log(date.toLocaleDateString("zh-CN"));
+    
+    function getDateString(date){
+      const year = date.getFullYear().toString().padStart(4,"0");
+      const month = (date.getMonth() + 1).toString().padStart(2,"0");
+      const day = date.getDate().toString().padStart(2,"0");
+
+      const hour=date.getHours().toString().padStart(2,"0");
+      const minute=date.getMinutes().toString().padStart(2,"0");
+      const second=date.getSeconds().toString().padStart(2,"0");
+      return `${year}年${month}月${day}日 ${hour}:${minute}:${second}`;
+    }
+
+    console.log(getDateString(new Date()));
+
+
+
+    const date1=new Date();
+    const date2=new Date();
+    date2.setHours(24);
+    console.log((date2.valueOf()-date1.valueOf())/(60*60*1000));
+  </script>
 </body>
 </html>

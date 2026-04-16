@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="div1">
+    <button>Lorem.</button><button>Officiis.</button><button>Nam.</button><button>Reprehenderit.</button><button>Ut!</button><button>Eos.</button><button>Explicabo?</button><button>Accusantium?</button><button>Cumque!</button><button>Corporis!</button><button>Repudiandae?</button><button>Rem.</button><button>Quos?</button><button>Exercitationem?</button><button>Impedit?</button><button>Provident.</button><button>Beatae.</button><button>Cum.</button><button>Blanditiis.</button><button>Repudiandae!</button>
+    <input type="text">
+  </div>
+  <div class="div2">
+    <p><span>Lorem ipsum dolor sit.</span><button><span>删除</span></button></p>
+    <p><span>Eum cupiditate a dolores.</span><button><span>删除</span></button></p>
+    <p><span>Reprehenderit voluptates veniam minima!</span><button><span>删除</span></button></p>
+    <p><span>Sapiente ut aperiam est?</span><button><span>删除</span></button></p>
+    <p><span>Cumque molestiae doloremque ipsum!</span><button><span>删除</span></button></p>
+    <p><span>Nemo similique minus vero!</span><button><span>删除</span></button></p>
+    <p><span>Cum vitae accusantium rem.</span><button><span>删除</span></button></p>
+    <p><span>Voluptatibus ipsa corporis dolor!</span><button><span>删除</span></button></p>
+    <p><span>Eius quam excepturi quia!</span><button><span>删除</span></button></p>
+    <p><span>Delectus omnis aut quos.</span><button><span>删除</span></button></p>
+  </div>
+  <a href="https://www.baidu.com">baidu</a>
+  <form action="https://www.baidu.com">
+    <p>
+      <input type="text">
+    </p>
+    <p>
+      <button class="btn" type="button">测试</button>
+    </p>
+  </form>
+  <div id="div3">
+    <button class="btn3">点击</button>
+  </div>
+  <script>
+    var div1=document.querySelector(".div1")
+    div1.onclick=function(e){
+      if(e.target.tagName==="BUTTON"){
+        e.target.remove();
+      }
+      console.log(e);
+    }
+    var div2=document.querySelector(".div2")
+    div2.onclick=function(e){
+      // console.log(e.target)
+      // console.log(this);
+      // console.log(e.currentTarget);
+      console.log(e.type);
+    }
+    var a=document.querySelector("a");
+    a.addEventListener('click',function(e){
+      // e.preventDefault();
+      // return false;
+    })
+    var btn=document.querySelector('.btn');
+    var form=document.querySelector("form");
+    btn.onclick=function(e){
+      e.stopPropagation();
+    }
+    form.onclick=function(){
+      console.log("form");
+    }
+
+    var div3=document.querySelector("#div3");
+    var btn3=document.querySelector(".btn3");
+    div3.addEventListener('click',function(e){
+      console.log(e.eventPhase);
+    })
+    btn3.onclick=function(e){
+      console.log("----")
+      console.log(e.eventPhase);
+    }
+
+  </script>
+</body>
+</html>

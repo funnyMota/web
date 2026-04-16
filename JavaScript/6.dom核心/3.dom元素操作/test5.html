@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      display: flex;
+    }
+    #sel1,#sel2{
+      width: 300px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <select id="sel1" multiple>
+        <option value="1">左一</option>
+        <option value="2">左二</option>
+        <option value="3">左三</option>
+        <option value="4">左四</option>
+        <option value="5">左五</option>
+      </select>
+    </div>
+    <div>
+      <button class="lr">>></button>
+      <button class="lra">>>|</button>
+      <button class="rl"><<</button>
+      <button class="rla">|<<</button>
+    </div>
+    <div class="right">
+      <select id="sel2" multiple>
+        <option value="1">左一</option>
+        <option value="2">左二</option>
+        <option value="3">左三</option>
+        <option value="4">左四</option>
+        <option value="5">左五</option>
+      </select>
+    </div>
+  </div>
+  <script>
+    var lr=document.querySelector(".lr");
+    var lra=document.querySelector(".lra");
+    var rl=document.querySelector(".rl");
+    var rla=document.querySelector(".rla");
+    var sel1=document.querySelector("#sel1");
+    var sel2=document.querySelector("#sel2");
+    function test(sel){
+      return Array.from(sel.children).filter(function(item){
+        return item.selected
+      });
+    }
+    function appendToSelect(opts,sel){
+      opts=Array.from(opts);
+      var frag=document.createDocumentFragment();
+      for(var i=0;i<opts.length;i++){
+        opts[i].selected=false;
+        frag.appendChild(opts[i]);
+      }
+      sel.appendChild(frag);
+    }
+    lr.onclick=function(){
+      var opts =test(sel1);
+      appendToSelect(opts,sel2);
+    }
+    rl.onclick=function(){
+      var opts =test(sel2);
+      appendToSelect(opts,sel1);
+    }
+    lra.onclick=function(){
+      appendToSelect(sel1.children,sel2);
+    }
+    rla.onclick=function(){
+      appendToSelect(sel2.children,sel1);
+    }
+  </script>
+</body>
+</html>

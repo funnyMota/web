@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    <input type="text">
+    <button>添加</button>
+  </p>
+  <ul>
+  </ul>
+  <script>
+    var p=document.querySelector("p");
+    var input=document.querySelector("input");
+    var ul=document.querySelector("ul");
+    var btn=ul.querySelector("button");
+    var arr=["删除","删除"];
+    getAll();
+    p.onclick=function(e){
+      if(e.target.tagName==="BUTTON"&&isNaN(input.value)){
+        if(!arr.includes(input.value)){
+          arr.push(input.value);
+          getAll();
+        }else{
+          alert("不能重复添加元素")
+        }
+      }
+      if(e.target.tagName==="INPUT"){
+        e.preventDefault();
+      }
+    }
+    function getAll(load){
+      if(load){
+        for(var i=0;i<arr.length;i++){
+          var li=document.createElement("li");
+          var span=document.createElement("span");
+          span.innerText=arr[i];
+          var button=document.createElement("button");
+          button.innerText="删除"
+          button.onclick=test(i);
+          li.appendChild(span);
+          li.appendChild(button);
+          ul.appendChild(li);
+        }
+      }else{
+        for(var i=arr.length-1;i<arr.length;i++){
+          var li=document.createElement("li");
+          var span=document.createElement("span");
+          span.innerText=arr[i];
+          var button=document.createElement("button");
+          button.innerText="删除"
+          button.onclick=test(i);
+          li.appendChild(span);
+          li.appendChild(button);
+          ul.appendChild(li);
+        }
+      }
+      function test(i) {
+        return function(e) {
+          e.target.parentElement.remove();
+          delete arr[i];
+        };
+      }
+    }
+  </script>
+</body>
+</html>

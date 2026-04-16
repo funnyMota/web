@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 500px;
+      height: 500px;
+      border: 1px solid #ccc;
+      position: relative;
+      margin: 0 auto;
+    }
+    .box .moveTank{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+    } 
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="moveTank"></div>
+  </div>
+  <script>
+    var config={
+      box:document.querySelector(".box"),
+      moveTank:document.querySelector(".moveTank"),
+      moveTankUpImg:'./images/tankUp.png',
+      moveTankDownImg:'./images/tankDown.png',
+      moveTankLeftImg:'./images/tankLeft.png',
+      moveTankRightImg:'./images/tankRight.png',
+      boxSize:{
+        width:500,
+        height:500,
+      },
+      moveTankSize:{
+        width:50,
+        height:50
+      },
+    }
+    config.randomSize={
+      width:(config.boxSize.width-config.moveTankSize.width)/2,
+      height:(config.boxSize.height-config.moveTankSize.height)/2,
+    }
+    initTankBg();
+    initTankPosition();
+    initTankMove();
+    function initTankBg(){
+      config.moveTank.style.background=`url(${config.moveTankUpImg}) left top/contain`;
+    }
+    function initTankPosition(){
+      config.moveTank.style.left=config.randomSize.width+"px";
+      config.moveTank.style.top=config.randomSize.height+"px";
+    }
+    function initTankMove() {
+      document.addEventListener('keydown', e => {
+        e.preventDefault();
+        moveDirection(e);
+      });
+
+      function moveDirection(e) {
+        const speed = e.shiftKey ? 20 : 5;
+        var style = getComputedStyle(config.moveTank);
+        var left = parseFloat(style.left);
+        var top = parseFloat(style.top);
+
+        if (e.key === 'ArrowUp') {
+          config.moveTank.style.background = `url(${config.moveTankUpImg}) left top/contain`;
+          top -= speed;
+        } else if (e.key === 'ArrowDown') {
+          config.moveTank.style.background = `url(${config.moveTankDownImg}) left top/contain`;
+          top += speed;
+        } else if (e.key === 'ArrowLeft') {
+          config.moveTank.style.background = `url(${config.moveTankLeftImg}) left top/contain`;
+          left -= speed;
+        } else if (e.key === 'ArrowRight') {
+          config.moveTank.style.background = `url(${config.moveTankRightImg}) left top/contain`;
+          left += speed;
+        }
+
+        // 边界限制
+        if(left<0){left=0;}
+        if(top<0){top=0;}
+        if(left>config.boxSize.width-config.moveTankSize.width){
+          left=config.boxSize.width-config.moveTankSize.width
+        }
+        if(top>config.boxSize.height-config.moveTankSize.height){
+          top=config.boxSize.height-config.moveTankSize.height
+        }
+        config.moveTank.style.left = left + 'px';
+        config.moveTank.style.top = top + 'px';
+      }
+    }
+  
+    // function initTankMove(){
+    //   document.addEventListener("keydown",e=>{
+    //     e.preventDefault();
+    //     moveDirection(e);
+    //   })
+    //   function moveDirection(e){
+    //     const speed = e.shiftKey ? 20 : 5;
+    //     if(e.key==="ArrowUp"){
+    //       config.moveTank.style.background=`url(${config.moveTankUpImg}) left top/contain`;
+    //       config.moveTank.style.top=parseInt(config.moveTank.style.top)-speed+"px"
+    //     }
+    //     if(e.key==="ArrowDown"){
+    //       config.moveTank.style.background=`url(${config.moveTankDownImg}) left top/contain`;
+    //       config.moveTank.style.top=parseInt(config.moveTank.style.top)+speed+"px"
+    //     }
+    //     if(e.key==="ArrowLeft"){
+    //       config.moveTank.style.background=`url(${config.moveTankLeftImg}) left top/contain`;
+    //       config.moveTank.style.left=parseInt(config.moveTank.style.left)-speed+"px"
+    //     }
+    //     if(e.key==="ArrowRight"){
+    //       config.moveTank.style.background=`url(${config.moveTankRightImg}) left top/contain`;
+    //       config.moveTank.style.left=parseInt(config.moveTank.style.left)+speed+"px"
+    //     }
+    //     move(e);
+    //   }
+    //   function move(e){
+    //     var left=parseInt(config.moveTank.style.left);
+    //     var top =parseInt(config.moveTank.style.top);
+    //     if(left<0){left=0;}
+    //     if(top<0){top=0;}
+    //     if(left>config.boxSize.width-config.moveTankSize.width){
+    //       left=config.boxSize.width-config.moveTankSize.width
+    //     }
+    //     if(top>config.boxSize.height-config.moveTankSize.height){
+    //       top=config.boxSize.height-config.moveTankSize.height
+    //     }
+    //     config.moveTank.style.left=left+"px";
+    //     config.moveTank.style.top=top+"px";
+    //   }
+  </script>
+</body>
+</html>

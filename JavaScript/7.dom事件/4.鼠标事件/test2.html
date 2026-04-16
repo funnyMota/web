@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .small{
+      position: relative;
+      width: 350px;
+      height: 350px;
+      border: 1px solid #ccc;
+      background-clip: padding-box;
+      float: left;
+    }
+    .big{
+      width: 540px;
+      height: 540px;
+      border: 1px solid #ccc;
+      background-clip: padding-box;
+      float: left;
+      margin-left: 10px;
+      display: none;
+    }
+    .small .move{
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: rgba(255, 255, 0, 0.5);
+      border: 1px solid #999;
+      box-sizing: border-box;
+      cursor: move;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="small">
+    <div class="move"></div>
+  </div>
+  <div class="big">
+
+  </div>
+  <script>
+    var config={
+      smallBg:"https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/403512/4/12421/44497/69b81afdF16f82055/0083320320901df2.png.avif",
+      bigBg:"https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/403512/4/12421/44497/69b81afdF16f82055/0083320320901df2.png.avif",
+      divBig:document.querySelector(".big"),
+      divSmall:document.querySelector(".small"),
+      move:document.querySelector(".move"),
+      smallImgSize:{
+        width:350,
+        height:350
+      },
+      divBigSize:{
+        width:540,
+        height:540,
+      },
+      bigImgSize:{
+        width:800,
+        height:800,
+      }
+    }
+    config.moveSize={
+      width:config.divBigSize.width/config.bigImgSize.width*config.smallImgSize.width,
+      height:config.divBigSize.height/config.bigImgSize.height*config.smallImgSize.height
+    }
+    init();
+    function init(){
+      initDivBg();
+      initMoveDiv();
+      initDivSmallEvent();
+      function initDivBg(){
+        config.divSmall.style.background=`url("${config.smallBg}") no-repeat left top/contain`;
+        config.divBig.style.background=`url("${config.smallBg}") no-repeat left top/800px 800px`;
+      }
+      function initMoveDiv(){
+        config.move.style.width=config.moveSize.width+"px";
+        config.move.style.height=config.moveSize.height+"px";
+      }
+      function initDivSmallEvent(){
+        config.divSmall.onmouseenter=function(e){
+          config.move.style.display="block"
+          config.divBig.style.display="block"
+        }
+        config.divSmall.onmouseleave=function(e){
+          config.move.style.display="none"
+          config.divBig.style.display="none"
+        }
+        config.divSmall.onmousemove=function(e){
+          var offset=getOffset(e);
+          setPosition(offset);
+        }
+        function setBigBgPosition(){
+          var style =getComputedStyle(config.move);
+          var left =parseFloat(style.left);
+          var top =parseFloat(style.top);
+          
+          var bgLeft=left/config.smallImgSize.width*config.bigImgSize.width;
+          var bgTop = top / config.smallImgSize.height * config.bigImgSize.height;
+          config.divBig.style.backgroundPosition=`-${bgLeft}px -${bgTop}px`;
+        }
+        /***
+         * 更具鼠标坐标得到move的坐标
+         *  
+         * 
+         */
+        function setPosition(offset){
+          var left=offset.x-config.moveSize.width/2;
+          var top=offset.y-config.moveSize.height/2;
+          if(left<0){
+            left=0;
+          }
+          if(top<0){
+            top=0;
+          }
+          if(left>config.smallImgSize.width-config.moveSize.width){
+            left=config.smallImgSize.width-config.moveSize.width;
+          }
+          if(top>config.smallImgSize.height-config.moveSize.height){
+            top=config.smallImgSize.height-config.moveSize.height;
+          }
+          config.move.style.left =left+"px";
+          config.move.style.top = top+"px";
+          setBigBgPosition();
+        }
+        /**
+         * 更具时间参数得到divsmall的坐标
+         * @param {MouseEvent} e
+        */
+        function getOffset(e){
+          if(e.target===config.divSmall){
+            return {
+              x:e.offsetX,
+              y:e.offsetY
+            }
+          }
+          else{
+            var style =getComputedStyle(config.move);
+            var left =parseFloat(style.left);
+            var top =parseFloat(style.top);
+            return {
+              x: e.offsetX + left+1,
+              y: e.offsetY + top +1
+            }
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
