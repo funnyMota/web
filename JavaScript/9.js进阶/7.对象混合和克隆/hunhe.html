@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../../../common/helpers.js"></script>
+  <script>
+    var obj1={
+      x:1,
+      y:3,
+      z:5
+    }
+    var obj2={
+      x:"abc",
+      z:"bcd",
+      h:"aaa"
+    }
+
+    var obj3={
+      g:123
+    }
+
+    // var obj=myPlugin.mixin(obj1,obj2);
+    // console.log(obj);
+    // var obj=Object.assign({},obj1,obj2,obj3);
+    // console.log(obj);
+    // console.log(obj1);
+    // console.log(obj2);
+    // console.log(obj3);
+    
+    complicate({
+      a:123,
+      b:45,
+      c:67,
+      d:"ab",
+    });
+
+    function complicate(option){
+      var defaultOption={
+        a:"default-a",
+        b:"default-b",
+        c:"default-c",
+        d:"default-d",
+        e:"default-e",
+      }
+      var obj=myPlugin.mixin(defaultOption,option);
+      console.log(obj);
+    }
+  </script>
+</body>
+</html>

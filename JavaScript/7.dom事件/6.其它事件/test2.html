@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .content{
+      width: 100%;  
+      height: auto;
+      box-sizing: border-box;
+      position: relative;
+    }
+    input{
+      width: 200px;
+      height: 30px;
+      display: block;
+      margin: 0 auto;
+    }
+    .box{
+      width: 180px;
+      height: 200px;
+      position: fixed;
+      left: 50px;
+      top: 50px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .boxClose{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+  </div>
+  <input type="text" class="userInput">
+  <script>
+    var content=document.querySelector(".content");
+    var input=document.querySelector(".userInput");
+    var messageList=[];
+    var classList={
+      width:180,
+      height:220,
+    }
+    window.addEventListener('resize', init);
+    input.addEventListener("keydown",function(e){
+      if(e.key === 'Enter'){
+        var arr=getPosition();
+        messageList.push({text:input.value,left:arr.left,top:arr.top});
+        addMessage(messageList[messageList.length-1]);
+      }
+    })
+
+    init();
+    function init(){
+      content.style.width=window.innerWidth+"px";
+      content.style.height=window.innerHeight-(input.offsetHeight*2)+"px";
+      var boxes = document.querySelectorAll(".box");
+      for(var i=0;i<messageList.length;i++){
+        var arr=getPosition();
+        messageList[i].left=arr.left;
+        messageList[i].top=arr.top;
+        boxes[i].style.left=messageList[i].left;
+        boxes[i].style.top=messageList[i].top;
+      }
+    };
+    function getPosition(){
+      var left = Math.floor((Math.random()*content.offsetWidth))-classList.width;
+      var top = Math.floor((Math.random()*content.offsetHeight))-classList.height;
+      while(left<0||top<0){
+        left = Math.floor((Math.random()*content.offsetWidth))-classList.width;
+        top = Math.floor((Math.random()*content.offsetHeight))-classList.height;
+      }
+      left=left+"px";
+      top=top+"px";
+      return {left:left,top:top}
+    }
+    function addMessage(obj){
+      var box=document.createElement("div");
+      var boxClose=document.createElement("div");
+      box.className="box";
+      boxClose.className="boxClose";
+      box.innerText=`${obj.text}`;
+      boxClose.innerText="X";
+      box.appendChild(boxClose);
+      content.appendChild(box);
+      boxClose.addEventListener("click",function(e){
+        box.style.display="none";
+      })
+      box.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        function onMove(e) {
+          box.style.left = e.pageX - classList.width / 2 + "px";
+          box.style.top = e.pageY - classList.height / 2 + "px";
+        }
+        function onUp() {
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onUp);
+        }
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+      });
+      setBox(box,obj);
+    }
+    function setBox(box,obj){
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+      box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      var luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+      box.style.color = luminance > 128 ? 'black' : 'white';
+      box.style.left=obj.left;
+      box.style.top=obj.top;
+    }
+  </script>
+</body>
+</html>

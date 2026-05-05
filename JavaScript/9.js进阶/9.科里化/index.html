@@ -6,14 +6,16 @@
   <title>Document</title>
 </head>
 <body>
-<div id="container">
-  <div id="inner">
-    <button id="btn">点击我</button>
-  </div>
-</div>
-
+  <script src="../../../common/helpers.js"></script>
   <script>
-
+  //科里化函数:
+    var func=function(x,y,z){
+      return (x+y)*z
+    }
+    var g=myPlugin.curry(func,1);
+    var y=g(5);
+    console.log(y(5,5));
+    
   </script>
 </body>
 </html>

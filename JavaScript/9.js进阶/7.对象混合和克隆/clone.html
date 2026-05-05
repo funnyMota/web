@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../../../common/helpers.js"></script>
+  <script>
+    // var obj={
+    //   x:1,
+    //   y:3,
+    // }
+    var obj={
+      x:1,
+      y:2,
+      subArray:[1,2,{
+        x:[1,2,3]
+      }],
+      subObj:{
+        a:'1e',
+        b:{
+          x:"e",
+        }
+      }
+    }
+    var newObj=myPlugin.clone(obj,true);
+    console.log(newObj);
+    console.log(newObj.subObj.b===obj.subObj.b);
+    
+
+  </script>
+</body>
+</html>

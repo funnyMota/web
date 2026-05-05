@@ -1,0 +1,119 @@
+.header{
+  height: 100px;
+  background-color: #fff;
+  position: relative;
+}
+
+.header-logo{
+  width: 56px;
+  height: 56px;
+  background: url(../img/logo.png);
+  background-size: 56px 56px;
+  margin: 22px 0;
+  margin-right: 172px;
+}
+
+.header-menu>a{
+  line-height: 100px;
+  padding: 0 10px;
+  font-size: 16px;
+  height: 100px;
+  text-align: center;
+}
+.header-menu:hover .submenu{
+  display: block;
+}
+.submenu{
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 30px 0;
+  display: none;
+  background: #fff;
+  z-index: 99;
+}
+.submenu a{
+  width: 204px;
+  text-align: center;
+  font-size: 12px;
+}
+.submenu a:hover{
+  color: inherit;
+}
+.submenu .submenu-img{
+  border-right: 1px solid #ccc;
+}
+.submenu .submenu-img img{
+  width: 160px;
+  height: 110px;
+}
+.submenu a:last-child .submenu-img img{
+  border-right: none;
+}
+.submenu .submenu-price{
+  color: #ff6700;
+}
+
+.header-search{
+  position: relative;
+  padding: 25px 0px;
+}
+
+.header-search input{
+  width: 245px;
+  height: 55px;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+   outline: none;
+}
+.header-search input:hover{
+  border-color: #424242;
+}
+.header-search input:hover~button{
+  border-color: #424242;
+}
+.header-search input:focus~.searchlist{
+  display: block;
+}
+.header-search input:focus{
+  border-color: #ff6700;
+}
+.header-search input:focus~button{
+  border-color: #ff6700;
+}
+.header-search button{
+  width: 55px;
+  height: 55px;
+  border: 1px solid #ccc;
+  border-left: none;
+  background: #fff;
+  cursor: pointer;
+}
+.header-search button:hover{
+  background: #ff6700;
+  border-color: #ff6700;
+  color: #fff;
+}
+.header-search .searchlist{
+  display: none;
+  position: absolute;
+  left: 0px;
+  top: 80px;
+  width: 245px;
+  background: #fff;
+  z-index: 99;
+  border: 1px solid #ff6700;
+  border-top: none;
+}
+.header-search .searchlist a{
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+}
+.header-search .searchlist a:hover{
+  background: #eee;
+  color: inherit;
+}

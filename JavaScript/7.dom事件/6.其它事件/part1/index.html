@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .noinput{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text" class="noinput" value="请输入关键字">
+  </div>
+  <form action="http://www.baidu.com">
+    <p>
+      <input type="text" placeholder="请输入账号" class="txtUser">
+    </p>
+    <button class="btnOne">按钮1</button>
+    <button class="btnTwo">按钮2</button>
+  </form>
+  <select name="" id="">
+    <option value="1">11</option>
+    <option value="2">22</option>
+    <option value="3">33</option>
+    <option value="4">44</option>
+    <option value="5">55</option>
+    <option value="6">66</option>
+    <option value="7">77</option>
+    <option value="8">88</option>
+    <option value="9">99</option>
+    <option value="10">1010</option>
+  </select>
+  <script>
+    var inp=document.querySelector("input");
+    inp.onfocus=function(e){
+      if(this.value===this.defaultValue&&this.className==="noinput"){
+        this.value="";
+        this.className="";
+      }
+    }
+    inp.onblur=function(e){
+      if(!this.value){
+        this.value=this.defaultValue;
+        this.className="noinput";
+      }
+    }
+    var form=document.querySelector("form");
+    var inp=document.querySelector("txtUser");
+    form.onsubmit=function(e){
+      if(!inp.value.trim()){
+        console.log("请输入账号");
+        e.preventDefault();
+      }
+    }
+    var sel=document.querySelector("select");
+    sel.onchange=function(e){
+      console.log((sel.options[sel.selectedIndex]));
+    }
+  </script>
+</body>
+</html>

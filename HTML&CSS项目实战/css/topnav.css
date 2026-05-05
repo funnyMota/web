@@ -1,0 +1,65 @@
+.topnav{
+  background:#333;
+  color: #b0b0b0;
+  height: 40px;
+  font-size: 12px;
+}
+.topnav-list{
+  height: 40px;
+  line-height: 40px;
+}
+.topnav-list li a{
+  border-right: 2px solid #424242;
+  padding: 0 7px;
+}
+.topnav-list li:last-child a{
+  border: none;
+}
+.topnav-list li:first-child a{
+  padding-left: 0;
+}
+.topnav-list a:hover{
+  color: #fff;
+}
+.topnav-car{
+  width: 120px;
+  height: 40px;
+  position: relative;
+  background: #424242;
+  margin-left: 13px;
+}
+.topnav-car i{
+  font-size: 16px;
+}
+.topnav-car a{
+  text-align: center;
+}
+.topnav-detail{
+  width: 300px;
+  height: 100px;
+  background: white;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  border: 1px solid #ccc;
+  border-top: none;
+  text-align: center;
+  line-height: 100px;
+  z-index: 99;
+  display: none;
+}
+.topnav-link {
+  display: block;
+  line-height: 40px;
+}
+.topnav-link .iconfont {
+  margin-right: 3px;
+}
+
+.topnav-car:hover .topnav-link {
+  color: #ff6700;
+  background: white;
+}
+.topnav-car:hover .topnav-detail{
+  display: block;
+}

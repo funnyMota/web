@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../../../common/helpers.js"></script>
+  <script>
+    var str="hello world e1e1";
+    function firstLetterUp(str){
+      return str.replace(/\b(\w)(\w*)\b/g,function($,$1,$2){
+        return $1.toUpperCase()+$2;
+      })
+    }
+    function otherLetterLower(str){
+      return str.replace(/\b(\w)(\w*)\b/g,function($,$1,$2){
+        return $1+$2.toLowerCase();
+      })
+    }
+    function removeEmpty(str){
+      return str.replace(/\s+/g,"");
+    }
+    function firstLetterLower(str){
+      return str.replace(/\w/,function($){
+        return $.toLowerCase();
+      })
+    }
+    function curString(len,str){
+      return str.substr(0,len);
+    }
+    var smallCamel=myPlugin.pipe(firstLetterUp,otherLetterLower,removeEmpty,firstLetterLower,myPlugin.curry(curString,10))
+    console.log(smallCamel(str));
+    
+  </script>
+</body>
+</html>

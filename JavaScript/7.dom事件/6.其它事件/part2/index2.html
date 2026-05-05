@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../index.css">
+  <script src="../index.js"></script>
+</head>
+<body style="overflow-y: scroll;border: 1px solid black;">
+  <img src="https://ts1.tc.mm.bing.net/th?id=OADD2.1225955522758993_14QRM5XNLYNMLP9&pid=21.2&c=17&roil=0&roit=0.0542&roir=1&roib=0.8385&w=300&h=157&dynsize=1&qlt=90&dpr=2.00" alt="">
+  <script>
+    // var img = document.querySelector("img");
+    // img.onload=function(){
+    //   console.log(this.width,this.height);
+    //   console.log("加载完毕");
+    // }
+    document.addEventListener("DOMContentLoaded",function(){
+      console.log("dom树构建完毕");
+    })
+    console.log(document.documentElement.offsetWidth);
+    console.log(document.documentElement.clientWidth);
+    console.log(window.innerWidth);
+    console.log(window.outerWidth);
+    console.log(window.screen.width);
+  </script>
+</body>
+</html>

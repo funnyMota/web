@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" name="" id="">
+  <script src="../../../common/helpers.js"></script>
+  <script>
+  // var func=function(width){
+  //   console.log(width);
+  // }.bind(window);
+  // var handle=myPlugin.debounce(func,1000)
+  // window.onresize=function(){
+  //   handle(document.documentElement.clientWidth);
+  // }
+  var inp = document.querySelector("input");
+  var handle=myPlugin.debounce(function(val,inp){
+    console.log(val);
+    console.log(inp);
+  },1000)
+  inp.oninput=function(){
+    handle(inp.value,this);
+  }
+  </script>
+</body>
+</html>

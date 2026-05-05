@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <p class="time">2</p>
+    <p class="count">0</p>
+    <p>
+      <button class="start">点击</button>
+      <button class="reset">重置</button>
+    </p>
+  </div>
+  <script>
+    var p1 = document.querySelector(".time");
+    var p2 = document.querySelector('.count');
+    var btn1=document.querySelector('.start');
+    var btn2=document.querySelector('.reset');
+    
+    var timer;
+    var time=parseInt(p1.innerText);
+    var count=0;
+    btn1.onclick=function(e){
+      if(timer){
+        count+=1;
+        p2.innerText=count;
+        return;
+      }
+      btn1.disabled = false;
+      timer=setInterval(function(e){
+        if(time==0){
+          clearInterval(timer);
+          btn1.disabled=true;
+        }else{
+          time-=1;
+          p1.innerText=time;
+        }
+      },1000)
+    }
+    btn2.onclick=function(e){
+      count=0;
+      p1.innerText=2;
+      p2.innerText=count;
+      timer=null;
+      time=parseInt(p1.innerText);
+      btn1.disabled = false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,p{
+      margin: 0;
+    }
+    .paper{
+      position: fixed;
+      width: 170px;
+      height: 170px;
+      background-color: brown;
+      padding: 20px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      left: 100px;
+      top: 100px;
+      cursor: move;
+    }
+    .paper span{
+      position: absolute;
+      cursor: pointer;
+      right: 5px;
+      top: 5px;
+    }
+    input{
+      position: fixed;
+      width: 200px;
+      height: 40px;
+      padding: 0  10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1.5em;
+      left: 0;
+      right: 0;
+      bottom: 30px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <input type="text" placeholder="请输入">
+  </div>
+  <script>
+    var zIndex=1;
+    var container=document.querySelector("#container"); 
+    var paperWidth=170,paperHeight=170;
+    var vWidth=document.documentElement.clientWidth;
+    var vHeight=document.documentElement.clientHeight;
+    var input=document.querySelector("input");
+    var arr=["世界和平","武大"];
+    window.onmousedown=function(e){
+      var div=getMoveDiv(e.target);
+      if(!div){
+        return;
+      }
+      div.style.zIndex=zIndex;
+      zIndex++;
+      var style=getComputedStyle(div);
+      var divLeft=parseFloat(style.left);
+      var divTop=parseFloat(style.top);
+      var pageX=e.pageX;
+      var pageY=e.pageY;
+      window.onmousemove=function(e){
+        var disX=e.pageX-pageX;
+        var disY=e.pageY-pageY;
+        var newLeft=divLeft+disX;
+        var newTop=divTop+disY;
+        if(newLeft<0) newLeft=0;
+        if(newTop<0) newTop=0;
+        if(newLeft>vWidth-paperWidth) newLeft=vWidth-paperWidth;
+        if(newTop>vHeight-paperHeight) newTop=vHeight-paperHeight;
+        div.style.left=newLeft+"px";
+        div.style.top=newTop+"px";
+      }
+      window.onmouseup=window.onmouseleave=function(e){
+        window.onmousemove=null;
+      }
+    }
+    function getMoveDiv(dom){
+      if(dom.className==="paper"){
+        return dom;
+      }else if(dom.parentElement&&dom.parentElement.className==="paper" && dom.tagName==="p"){
+        return dom.parentElement;
+      }
+    }
+
+    function createWish(words){
+      var div=document.createElement("div");
+      div.className="paper";
+      div.innerHTML=`<p>${words}</p><span>x</span>`
+      div.style.background=`rgb(${getRandom(100,200)},${getRandom(100,200)},${getRandom(100,200)})`
+      container.appendChild(div);
+      var maxLeft=document.documentElement.clientWidth-paperWidth;
+      var maxTop=document.documentElement.clientHeight-paperHeight-80;
+      div.style.left=getRandom(0,maxLeft)+"px";
+      div.style.top=getRandom(0,maxTop)+"px";
+    }
+    function getRandom(min,max){
+      return Math.floor(Math.random()*(max+1-min)+min);
+    }
+    function createInitPapers(){
+      arr.forEach(function(item){
+        createWish(item);
+      })
+    }
+
+    window.onresize=function(){
+      var disX=document.documentElement.clientWidth-vWidth;
+      var disY=document.documentElement.clientHeight-vHeight;
+
+      for (let i = 0; i < container.children.length; i++) {
+        var paper = container.children[i];
+
+        var left=parseFloat(paper.style.left);
+        var right=vWidth-paperWidth-left;
+        var newLeft=left+left/(left+right)*disX;
+
+        var top=parseFloat(paper.style.top);
+        var bottom=vHeight-paperHeight-top;
+        var newTop=top+top/(top+bottom)*disY;
+
+        paper.style.left=newLeft+"px";
+        paper.style.top=newTop+"px";
+
+      }
+      vWidth=document.documentElement.clientWidth;
+      vHeight=document.documentElement.clientHeight;
+    }
+    input.onkeypress=function(e){
+      if(e.key==="Enter"){
+        if(this.value){
+          createWish(this.value);
+          arr.push(this.value);
+        }
+      }
+    }
+    createInitPapers();
+  </script>
+</body>
+</html>

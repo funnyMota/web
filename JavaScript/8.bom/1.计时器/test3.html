@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 150px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    var divNode={
+      _x:45,     
+      _y:45,
+      width:200,
+      height:150,
+      div:document.querySelector('div'),
+      timer:null,
+    }
+
+    Object.defineProperty(divNode,"left",{
+      get:function(){
+        return this._x;
+      },
+      set:function(val){
+        if(val < 0){
+          val = 0;
+          x = -x;  
+        }
+        // 碰到右边界
+        else if(val > window.innerWidth - this.width){
+          val = window.innerWidth - this.width;
+          x = -x;  
+        }
+        this._x = val;
+        this.div.style.left = val + "px";
+      }
+    })
+
+    Object.defineProperty(divNode,"top",{
+      get:function(){
+        return this._y;
+      },
+      set:function(val){
+        if(val < 0){
+          val = 0;
+          y = -y; 
+        }
+        else if(val > window.innerHeight - this.height){
+          val = window.innerHeight - this.height;
+          y = -y;  
+        }
+        this._y = val;
+        this.div.style.top = val + "px";
+      }
+    })
+
+    var x = 5;
+    var y = 5;
+
+    init();
+
+    function init(){
+      initPositon();
+      initMove();
+      
+      function initPositon(){
+        divNode.left = divNode._x;
+        divNode.top = divNode._y;
+      }
+      
+      function initMove(){
+        setInterval(move, 16);
+        function move(){
+          divNode.left = divNode.left + x;
+          divNode.top = divNode.top + y;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

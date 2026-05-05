@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .dialog{
+      position: absolute;
+      width: 260px;
+      height: 160px;
+      left: 0;
+      right: 0;
+      top:0;
+      bottom: 0;
+      margin: auto;
+      background-color: #fff;
+    }
+    .modal{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+    }
+    .close{
+      float:right;cursor:pointer;
+    }
+    .head{
+      height:40px;
+      background-color:#eee;
+      padding:10px;
+      box-Sizing:border-box;
+    }
+    .content{
+      height: 70px;
+      padding: 10px;
+      box-Sizing:border-box;
+    }
+    .button{
+      height: 50px;
+      padding: 10px;
+      box-Sizing:border-box;
+    }
+  </style>
+</head>
+<body>
+  <button class="open">按钮</button>
+  <script>
+    document.querySelector(".open").onclick=function(){
+      myPlugin.openConfirm();
+    }
+    if(!window.myPlugin){
+      window.myPlugin={};
+    }
+    window.myPlugin.openConfirm=(function(){
+      var divModal;
+      var divCenter;
+      var options;
+      var isEvent;
+
+      function openConfirm(opts){
+        if(!opts){
+          opts={
+            title:"提示",
+            content:"",
+            confirmText:"确定",
+            cancelText:"取消",
+            confirmClass:"confirm",
+            cancelClass:"cancel"
+          };
+        }
+        options=opts;
+        initModal();
+        initCenterDiv();
+        initRegEvent();
+      }
+      function initModal(){
+        if(!divModal){
+          divModal=document.createElement("div");
+          divModal.className="modal";
+          document.body.appendChild(divModal);
+        }
+        divModal.style.display="block";
+      }
+      function initCenterDiv(){
+        if(!divCenter){
+          divCenter=document.createElement("div");
+          divCenter.className="dialog";
+          initDivCenterContent();
+          divModal.appendChild(divCenter);
+        }
+      }
+      function initDivCenterContent(){
+        var div=document.createElement("div");
+        div.className="head";
+        div.innerHTML=`<span style="float:left">${options.title}</span>
+        <span class="close">X</span>`
+        divCenter.appendChild(div);
+
+        var contentDiv=document.createElement("div");
+        contentDiv.innerText=`${options.content}`
+        contentDiv.className="content";
+        divCenter.appendChild(contentDiv);
+
+        var buttonDiv=document.createElement("div");
+        buttonDiv.className="button";
+        buttonDiv.style.textAlign="right";
+        buttonDiv.innerHTML=`
+          <button class=${options.confirmClass}>${options.confirmText}</button>
+          <button class=${options.cancelClass}>${options.cancelText}</button>
+        `
+        divCenter.appendChild(buttonDiv);
+      }
+      function initRegEvent(){
+        if(!isEvent){
+          isEvent=true;
+          var confirm=document.querySelector(`.${options.confirmClass}`);
+          var cancel=document.querySelector(`.${options.cancelClass}`);
+          var close=document.querySelector(`.close`);
+
+          close.onclick=function(e){
+            divModal.style.display="none";
+          }
+          divModal.onclick=function(e){
+            if(e.target===this){
+              divModal.style.display="none";
+            }
+          }
+          confirm.onclick=function(){
+            if(options.onconfirm){
+              options.onconfirm();
+            }
+            divModal.style.display="none";
+          }
+          cancel.onclick=function(){
+            if(options.onconfirm){
+              options.oncancel();
+            }
+            divModal.style.display="none";
+          }
+        }
+      }
+
+      return openConfirm;
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 300px;
+      border: 1px solid #ccc;
+      position: fixed;
+      left: 0;
+      right: 0;
+      display: none;
+      border-radius: 10px;
+      background-color: #1f1f1f;
+    }
+    .box li{
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <ul>
+      <li>菜单1</li>
+      <li>菜单2</li>
+      <li>菜单3</li>
+      <li>菜单4</li>
+      <li>菜单5</li>
+      <li>菜单6</li>
+      <li>菜单7</li>
+      <li>菜单8</li>
+      <li>菜单9</li>
+      <li>菜单10</li>
+    </ul>
+  </div>
+  <script>
+    var box=document.querySelector(".box");
+    document.documentElement.addEventListener('contextmenu',function(e){
+      e.preventDefault();
+    })
+    window.addEventListener("mousedown",function(e){
+      if (e.button !== 2) {
+        box.style.display = "none";
+        return;
+      }
+      var boxHeight = box.offsetHeight; 
+      var boxWidth = box.offsetWidth; 
+      var x = e.clientX;
+      var y = e.clientY;
+      box.style.top = (y + boxHeight > window.innerHeight ? y - boxHeight : y) + "px";
+      box.style.left=(x+boxWidth>window.innerWidth? x-boxWidth:x)+"px";
+      box.style.display = "block";
+    })
+  </script>
+</body>
+</html>
