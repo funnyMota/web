@@ -1,0 +1,52 @@
+# 原始类型包装器
+
+- new 包装器(值):返回的是一个对象
+- 包装器(值):返回的是一个原始类型
+  
+## Number  
+
+### 静态成员
+- isNaN  
+- isFinite
+- isInteger: 判断一个数据是否是整数
+- parseFloat: 将一个数据转换为小数
+- parseInt: 将一个数据转换为整数,直接舍弃小数部分
+parseInt,parseFloat要求参数是一个字符串,如果不是字符串,则先转换为字符串。
+从字符串开始位置开始查找,找到第一个有效数字进行转换,如果没找到则返回NaN,左右空白字符会忽略
+parseInt,可以传入第二个参数,表示将给定的字符串转换为特定进制
+
+### 实例成员
+
+- toFixed: 会有四舍五入
+- toPrecision: 以指定的精度返回一个数字字符串
+
+## Boolean
+
+
+## String
+
+### 静态成员
+
+- formCharCode: 通过unicode编码创建字符串
+
+
+### 实例成员
+
+- length: 字符串长度
+- charAt: 返回指定位置的字符
+- charCodeAt: 返回指定字符的unicode编码
+- concat: 连接两个字符串,返回新字符串
+- includes: 查询字符串是否包含其他字符串
+- endsWith: 是否以某段字符结尾
+- indexOf: 查找字符串在字符串的下标
+- lastIndexOf:查找字符串在字符串末尾的下标
+- padStart(length,字符串): 在指定位置填充字符
+- padEnd(length,字符串): 在指定位置填充字符
+- repeat(次数): 重复字符串
+- slice: 从某个取到某个位置;位置可以是负数
+- substr(from,length): 从某个位置开始取,取指定长度;可以是负数
+- substring(from,length): 从某个位置取到某个位置;不可以是负数;参数位置可调换
+- toLowerCase: 转换为小写
+- toUpperCase: 转换为大写
+- trim: 去掉首尾空格
+- split(指定符号): 分割字符串成数组

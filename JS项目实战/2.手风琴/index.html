@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 100%;
+      font-weight: normal;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .menu-container {
+      width: 200px;
+      margin: 0 auto;
+      line-height: 30px;
+    }
+
+    .menu-container h2 {
+      padding: 0 25px;
+      cursor: pointer;
+      background: lightblue;
+    }
+
+    .submenu {
+      background: #e0f0f7;
+      padding: 0 30px;
+      height: 0;
+      overflow: hidden;
+    }
+    .menu {
+      margin: 20px 0;
+    }
+
+    .submenu li {
+      height: 30px;
+      color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <ul class="menu">
+    <li class="menu-container">
+      <h2>菜单1</h2>
+      <ul class="submenu">
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+      </ul>
+    </li>
+    <li class="menu-container ">
+      <h2>菜单2</h2>
+      <ul class="submenu">
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+      </ul>
+    </li>
+    <li class="menu-container "> 
+      <h2>菜单3</h2>
+      <ul class="submenu">
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+      </ul>
+    </li>
+    <li class="menu-container ">
+      <h2>菜单4</h2>
+      <ul class="submenu">
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+      </ul>
+    </li>
+  </ul>
+  <script src="./animate.js"></script>
+  <script src="./index.js"></script>
+  <!-- <script>
+    var list=document.querySelector('.menu')
+    for(var i=0;i<list.children.length;i++){
+      (function(i){
+        var change=0;
+        var li=list.children[i];
+        var sonul=li.querySelector('ul');
+        var height=sonul.children.length*30;
+        li.onclick=function(){
+          createAnimate({
+            from:change?height:0,
+            to:change?0:height,
+            totalMs:1000,
+            duration:15,
+            onmove:function(from){
+              sonul.style.height=from+"px";
+            }
+          })
+          change=!change;
+        }
+      })(i);
+    }
+  </script> -->
+</body>
+</html>

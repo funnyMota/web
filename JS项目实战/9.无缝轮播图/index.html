@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container{
+      width: 800px;
+      height: 500px;
+      margin: 0 auto;
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .imglist{
+      height: 100%;
+    }
+    .imglist img{
+      width: 800px;
+      height: 500px;
+      object-fit: cover;
+      float: left;
+    }
+    .indicator{
+      position: absolute;
+      left: 250px;
+      bottom: 0;
+      width: 300px;
+      height: 50px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .indicator .active{
+      background-color: orangered;
+    }
+    .indicator li{
+      display: inline-block;
+      cursor: pointer;
+      width: 30px;
+      height: 8px;
+      margin: 2px;
+      background-color: rgba(138, 138, 138, 0.3);
+      list-style: none;
+    }
+    .arrow div{
+      width: 100px;
+      height: 500px;
+      background-color: rgba(0,0,0,0.5);
+      font-size: 30px;
+      line-height: 500px;
+      text-align: center;
+      color: white;
+      opacity: 0;
+    }
+    .arrow-left:hover,.arrow-right:hover{
+      opacity: 1;
+    }
+    .arrow-left{
+      position: absolute;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+    .arrow-right{
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="imglist">
+    </div>
+    <div class="indicator">
+    </div>
+    <div class="arrow">
+      <div class="arrow-left"><</div>
+      <div class="arrow-right">></div>
+    </div>
+  </div>
+  <script src="./animate.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+# 标准库
+- 库: liberary
+- API: 应用程序接口 Application Programing Interface
+- 标准: ECMAScript标准
+
+## Object
+
+### 静态成员
+- Object.keys(obj) 得到某个对象的所有属性名数组
+- Object.values(obj) 得到某个对象的所有属性值数组
+- Object.entries(obj) 得到某个对象的所有属性名和属性值数组
+
+### 实例成员
+
+**所有对象都有实例成员**
+- obj.toString() 得到对象返回的字符串
+默认情况下,该方法返回[object Object]
+
+- obj.valueOf() 得到某个对象的值
+默认返回该对象本身
+
+> 在JS中,当自动的进行类型转换时,如果要对一个对象进行转换,实际上是先调用对象的valueOf方法,然后调用返回结果的toString方法,将得到的结果进一步转换
+
+- 如果调用valueOf已经得到了原始类型则不会调用toString方法
+
+## Function 
+
+**所有函数都具有Function中的示例成员**
+
+**arguments:在函数中使用,获取函数调用时,传递所有的参数**
+
+**arguments是一个伪数组(没有通过Array函数创建),伪数组会缺少大量的数组实例方法**
+
+**arguments的值,会与对应的值映射**
+
+### 实例成员
+
+- length 得到函数形参的数量
+- apply方法: 调用函数,同时指定函数this指向(数组传入)
+- call方法: 调用函数,同时指定函数this指向(单个传入)
+- bind方法：得到一个新函数,该函数中的this始终指向值
+
+通常可以利用apply、call方法,将伪数组转换为真数组

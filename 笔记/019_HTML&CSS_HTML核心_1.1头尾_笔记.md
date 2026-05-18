@@ -1,0 +1,34 @@
+# HTML&CSS
+
+## `head`
+
+```html
+<head></head>
+```
+
+- `head` 表示文档头，不会显示到页面上
+
+## `meta`
+
+```html
+<meta />
+```
+
+- 文档的元数据
+- `charset`：指定网页编码
+
+## `title`
+
+```html
+<title></title>
+```
+
+- `title` 表示网页标题
+
+## `body`
+
+```html
+<body></body>
+```
+
+- `body` 表示文档体，会展示在页面上
